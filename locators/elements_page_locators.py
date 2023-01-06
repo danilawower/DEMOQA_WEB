@@ -18,3 +18,10 @@ class TextBoxPageLocators:
 
 
 
+class CheckBoxPageLocators:
+
+    EXPAND_ALL_BUTTON = (By.XPATH, "//button[@title='Expand all']")
+    ITEM_LIST = (By.CSS_SELECTOR, "span[class='rct-title']")  #несколько элементов  со сходжим селектором или хпасом
+    CHECKED_ITEMS = (By.CSS_SELECTOR, "svg[class='rct-icon rct-icon-check']")
+    TITLE_ITEM = (".//ancestor::span[@class='rct-text']")
+    OUTPUT_RESULT = (By.CSS_SELECTOR, "span[class='text-success']")
