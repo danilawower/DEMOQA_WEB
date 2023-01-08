@@ -1,6 +1,6 @@
 import time
 
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage
 
 
 class TestElements:  #весь раздел элементов
@@ -29,6 +29,14 @@ class TestElements:  #весь раздел элементов
             #radio_button_page.click_on_the_radio_button('yes')
             #radio_button_page.click_on_the_radio_button('no')
             #radio_button_page.click_on_the_radio_button('impressive')
+
+
+    class TestWebTable:
+        def test_web_table_add_person(self, driver):
+            web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
+            web_table_page.open()
+            web_table_page.add_new_person()
+
 
 
 
