@@ -111,4 +111,12 @@ class WebTablePage(BasePage):
             self.element_is_visible(self.locators.SUBMIT).click()
 
             count -= 1
-            return firstname, lastname, email, age, salary, department
+            return [firstname, lastname, str(age), email, str(salary), department]  #вводим данные списком и строковыми значениями, чтобы они совпали с выведенными данными
+
+    def check_new_added_person(self):
+        person_list = self.elements_are_present(self.locators.FULL_PEOPLE_LIST)
+        data = [] #данные списком
+        for item in person_list:
+            data.append(item.text.splitlines()) #добавить данные текстовые, разделяя линии
+        return data
+
