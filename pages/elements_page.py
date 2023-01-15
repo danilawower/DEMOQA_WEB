@@ -2,8 +2,9 @@ import random
 
 from generator.generator import generated_person
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
-    WebTablePageLocators
+    WebTablePageLocators, ButtonsPageLocators
 from pages.base_page import BasePage
+from selenium.webdriver.common.by import By
 import time
 
 
@@ -111,12 +112,49 @@ class WebTablePage(BasePage):
             self.element_is_visible(self.locators.SUBMIT).click()
 
             count -= 1
-            return [firstname, lastname, str(age), email, str(salary), department]  #вводим данные списком и строковыми значениями, чтобы они совпали с выведенными данными
+            return [firstname, lastname, str(age), email, str(salary),
+                    department]  # вводим данные списком и строковыми значениями, чтобы они совпали с выведенными данными
 
     def check_new_added_person(self):
         person_list = self.elements_are_present(self.locators.FULL_PEOPLE_LIST)
-        data = [] #данные списком
+        data = []  # данные списком
         for item in person_list:
-            data.append(item.text.splitlines()) #добавить данные текстовые, разделяя линии
+            data.append(item.text.splitlines())  # добавить данные текстовые, разделяя линии
         return data
 
+    def search_some_person(self, key_word):  # по ключевому слову
+        self.element_is_visible(self.locators.SEARCH_INPUT).send_keys(key_word)
+
+    def check_search_person(self):
+        delete_button = self.element_is_present(self.locators.DELETE_BUTTON)
+        row = delete_button.find_element(By.XPATH, ".//ancestor::span[@class='rt-tr-group']")
+        return row.text.splitlines()  # возвращаем значение row его текст, разделяя линии
+
+    def update_person_info(self):
+        person_info = next(generated_person())
+        age = person_info.age
+        self.element_is_visible(self.locators.UPDATE_BUTTON).click()
+        self.element_is_visible(self.locators.AGE_INPUT).clear()
+        self.element_is_visible(self.locators.AGE_INPUT).send_keys(age)
+        self.element_is_visible(self.locators.SUBMIT).click()
+        return str(age)  # выведем(вернём) строоковое значение годов
+
+
+class ButtonsPage(BasePage):
+    locators = ButtonsPageLocators()
+
+    def click_on_different_button(self, type_click):  # тип клика
+        if type_click == "double":
+            self.action_double_click(self.element_is_visible(self.locators.DOUBLE_BUTTON))
+            return self.check_clicked_on_the_button(self.locators.SUCCESS_DOUBLE)  # ретёрним результаты используя функцию ниже
+
+        if type_click == "right":
+            self.action_right_click(self.element_is_visible(self.locators.RIGHT_CLICK_BUTTON))
+            return self.check_clicked_on_the_button(self.locators.SUCCESS_RIGHT)
+
+        if type_click == "click":
+            self.element_is_visible(self.locators.CLICK_ME_BUTTON).click()
+            return self.check_clicked_on_the_button(self.locators.SUCCESS_CLICK_ME)
+
+    def check_clicked_on_the_button(self, element):
+        return self.element_is_present(element).text

@@ -48,4 +48,20 @@ class WebTablePageLocators:
 
     #tables
     FULL_PEOPLE_LIST = (By.XPATH, "//div[@class='rt-tr-group']")
+    SEARCH_INPUT = (By.XPATH, "//input[@id='searchBox']")
+    DELETE_BUTTON = (By.CSS_SELECTOR, "span[title='Delete']")
+    ROW_PARENT = ".//ancestor::span[@class='rt-tr-group']"
 
+    #update
+    UPDATE_BUTTON = (By.XPATH, "//span[@id='edit-record-1']")
+
+
+class ButtonsPageLocators:
+    DOUBLE_BUTTON = (By.XPATH, "//button[@id='doubleClickBtn']")
+    RIGHT_CLICK_BUTTON = (By.XPATH, "//button[@id='rightClickBtn']")
+    CLICK_ME_BUTTON = (By.XPATH, "//button[@class='btn btn-primary'][text()='Click Me']")
+
+    #result
+    SUCCESS_DOUBLE = (By.XPATH, "//p[@id='doubleClickMessage']")
+    SUCCESS_RIGHT = (By.XPATH, "//p[@id='rightClickMessage']")
+    SUCCESS_CLICK_ME = (By.XPATH, "//p[@id='dynamicClickMessage']")
