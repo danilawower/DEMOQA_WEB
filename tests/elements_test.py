@@ -1,7 +1,8 @@
 import random
 import time
 
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage, \
+    UploadAndDownloadPage
 
 
 class TestElements:  #весь раздел элементов
@@ -73,6 +74,36 @@ class TestElements:  #весь раздел элементов
             assert double == 'You have done a double click'
             assert right == 'You have done a right click'
             assert click == 'You have done a dynamic click'
+
+
+    class TestLinkPage:
+        def test_check_ling(self, driver):
+            links_page = LinksPage(driver, "https://demoqa.com/links")
+            links_page.open()
+            links_page.check_new_tab_simple_link()
+
+
+        def test_check_broken_link(self, driver):
+            links_page = LinksPage(driver, "https://demoqa.com/links")
+            links_page.open()
+            responce_code = links_page.check_broken_link('https://demoqa.com/bad-request')
+            assert responce_code == 400
+
+
+
+    class TestUploadAndDownload:
+        def test_upload_file(self, driver):
+            upload_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
+            upload_download_page.open()
+            upload_download_page.upload_file()
+
+
+        def test_download_file(self, driver):
+            upload_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
+            upload_download_page.open()
+            upload_download_page.download_file()
+
+
 
 
 

@@ -1,8 +1,11 @@
+import os
 import random
 
-from generator.generator import generated_person
+import requests
+
+from generator.generator import generated_person, generated_file
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
-    WebTablePageLocators, ButtonsPageLocators
+    WebTablePageLocators, ButtonsPageLocators, LinksPageLocators, UploadAndDownloadPageLocators
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 import time
@@ -143,7 +146,7 @@ class WebTablePage(BasePage):
 class ButtonsPage(BasePage):
     locators = ButtonsPageLocators()
 
-    def click_on_different_button(self, type_click):  # тип клика
+    def click_on_different_button(self, type_click):  # тип клика, можно задать разные типы
         if type_click == "double":
             self.action_double_click(self.element_is_visible(self.locators.DOUBLE_BUTTON))
             return self.check_clicked_on_the_button(self.locators.SUCCESS_DOUBLE)  # ретёрним результаты используя функцию ниже
@@ -158,3 +161,51 @@ class ButtonsPage(BasePage):
 
     def check_clicked_on_the_button(self, element):
         return self.element_is_present(element).text
+
+class LinksPage(BasePage):
+    locators = LinksPageLocators()
+
+    def check_new_tab_simple_link(self):
+        simple_link = self.elements_are_visible(self.locators.SIMPLE_LINK)
+        link_href = simple_link.getattribute('href')
+        request = requests.get(f"{link_href}") #request функция запросов
+        if request.status_code == 200:
+            simple_link.click()
+            self.driver.switch_to.window(self.driver.window_handles[1]) #переключает на окно с иднексом один(второе)
+            url = self.driver.current_url
+            return link_href, url
+        else:
+            return link_href, request.status_code
+
+
+    def check_broken_link(self, url):
+        request = requests.get(url) #этот юрл мы указываем в тесте
+        if request.status_code == 200:
+            self.element_is_present(self.locators.BAD_REQUEST).click()
+        else:
+            return request.status_code
+
+
+class UploadAndDownloadPage(BasePage):
+    locators = UploadAndDownloadPageLocators()
+
+    def upload_file(self):
+        file_name, path = generated_file()
+        self.element_is_present(self.locators.UPLOAD_FILE).send_keys(path) #отправляем кейсами сам путь файла, из generator.py
+        os.remove(path) #удаление операц. системой файла
+        text = self.element_is_present(self.locators.UPLOADED_FILE).text
+
+    def download_file(self):
+        link = self.element_is_present(self.locators.DOWNLOAD_FILE).get_attribute('href') #достаём аттрибут элемента. гиперссылку например
+        print(link)
+
+
+
+
+
+
+
+
+
+
+

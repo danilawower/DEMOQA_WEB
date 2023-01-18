@@ -42,3 +42,5 @@ class BasePage:
         action = ActionChains(self.driver)
         action.context_click(element) #context-click = (right click) on an element.
         action.perform()
+
+
