@@ -1,8 +1,7 @@
+import base64
 import os
 import random
-
 import requests
-
 from generator.generator import generated_person, generated_file
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
     WebTablePageLocators, ButtonsPageLocators, LinksPageLocators, UploadAndDownloadPageLocators
@@ -197,7 +196,11 @@ class UploadAndDownloadPage(BasePage):
 
     def download_file(self):
         link = self.element_is_present(self.locators.DOWNLOAD_FILE).get_attribute('href') #достаём аттрибут элемента. гиперссылку например
-        print(link)
+        link_b = base64.b64decode(link) #указываем кодировани ссылки /jpeg;base64,
+        path_name_file = rf'C:\Users\daniil\PycharmProjects\automation_qa_course\filetest{random.randint(0, 999)}.jpg'
+        with open(path_name_file, 'wb+') as f: #wb+ записать и создать
+            offset = link_b.find(b'\xff\xd8') #оффсет, что будет скачиваться. декод бейз64 файла лежит в debug
+            f.write(link_b[offset:])
 
 
 
