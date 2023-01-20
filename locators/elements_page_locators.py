@@ -72,5 +72,10 @@ class LinksPageLocators:
 class UploadAndDownloadPageLocators:
     UPLOAD_FILE = (By.XPATH, "//input[@id='uploadFile']")
     UPLOADED_FILE = (By.XPATH, "//p[@id='uploadedFilePath']")
-
     DOWNLOAD_FILE = (By.XPATH, "//a[@id='downloadButton']")
+
+
+class DynamicPropertiesPageLocators:
+    COLOR_CHANGE_BUTTON = (By.XPATH, "//button[@id='colorChange']")
+    VISIBLE_AFTER_FIVE_SEC_BUTTON = (By.XPATH, "//button[@id='visibleAfter']")
+    ENABLE_BUTTON = (By.XPATH, "//button[@id='enableAfter']")

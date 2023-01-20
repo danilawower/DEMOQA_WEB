@@ -2,9 +2,11 @@ import base64
 import os
 import random
 import requests
+from selenium.common import TimeoutException
 from generator.generator import generated_person, generated_file
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
-    WebTablePageLocators, ButtonsPageLocators, LinksPageLocators, UploadAndDownloadPageLocators
+    WebTablePageLocators, ButtonsPageLocators, LinksPageLocators, UploadAndDownloadPageLocators, \
+    DynamicPropertiesPageLocators
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 import time
@@ -199,8 +201,40 @@ class UploadAndDownloadPage(BasePage):
         link_b = base64.b64decode(link) #указываем кодировани ссылки /jpeg;base64,
         path_name_file = rf'C:\Users\daniil\PycharmProjects\automation_qa_course\filetest{random.randint(0, 999)}.jpg'
         with open(path_name_file, 'wb+') as f: #wb+ записать и создать
-            offset = link_b.find(b'\xff\xd8') #оффсет, что будет скачиваться. декод бейз64 файла лежит в debug
-            f.write(link_b[offset:])
+            s = link_b.find(b'\xff\xd8') #используемый декод бейз64 файла лежит в debug
+            f.write(link_b[s:])
+        os.remove(path_name_file)
+
+
+class DynamicPropertiesPage(BasePage):
+    locators = DynamicPropertiesPageLocators()
+
+    def check_enable_button(self):
+        time.sleep(6)
+        try:
+            self.element_is_clickable(self.locators.ENABLE_BUTTON)
+        except TimeoutException: #добавляем таймаут в исключения
+            return False
+        return True
+
+    def check_color_change(self):
+        color_button = self.element_is_present(self.locators.COLOR_CHANGE_BUTTON)
+        color_button_before = color_button.value_of_css_property('color') #метод берущий свойство CSS (например цвет)
+        time.sleep(6)
+        color_button_after = color_button.value_of_css_property('color')
+        return color_button_after, color_button_before
+
+    def check_appear_button(self):
+        time.sleep(6)
+        try:
+            self.element_is_visible(self.locators.VISIBLE_AFTER_FIVE_SEC_BUTTON)
+        except TimeoutException:
+            return False
+        return True
+
+
+
+
 
 
 
