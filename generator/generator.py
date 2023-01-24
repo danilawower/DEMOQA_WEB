@@ -18,6 +18,7 @@ def generated_person():  # вызываем класс Пёрсон из дат�
         department=faker_ru.job(),
         current_address=faker_ru.address(),
         permanent_address=faker_ru.address(),
+        mobile=faker_ru.msisdn() #(Mobile Subscriber Integrated Services Digital Number) — номер мобильного абонента цифровой сети с интеграцией служб для связи в стандартах GSM, UMTS
     )
 
 
