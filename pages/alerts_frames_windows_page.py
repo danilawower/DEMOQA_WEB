@@ -1,7 +1,8 @@
 import random
 import time
 
-from locators.alerts_frames_windows_locators import BrowserWindowsPageLocators, AlertPageLocators, FramesPageLocators
+from locators.alerts_frames_windows_locators import BrowserWindowsPageLocators, AlertPageLocators, FramesPageLocators, \
+    NestedFramesPageLocators, ModalWindowsPageLocators
 from pages.base_page import BasePage
 
 
@@ -57,12 +58,12 @@ class FramesPage(BasePage):
 
     def check_frame(self, frame_num):  # нумерация фрейма. там их два
         if frame_num == 'frame1':
-            frame = self.element_is_present(self.locators.FIRST_FRAME) #обозначил элемент, с которым буду работать
-            width = frame.get_attribute('width') #получаю с него нужные параметры
+            frame = self.element_is_present(self.locators.FIRST_FRAME)  # обозначил элемент, с которым буду работать
+            width = frame.get_attribute('width')  # получаю с него нужные параметры
             height = frame.get_attribute('height')
-            self.driver.switch_to.frame(frame) #переключаемся на фрейм и указываем на какой
+            self.driver.switch_to.frame(frame)  # переключаемся на фрейм и указываем на какой
             text = self.element_is_present(self.locators.TITLE_NAME).text
-            self.driver.switch_to.default_content() #переключаемся с фрейма на начальную страницу
+            self.driver.switch_to.default_content()  # переключаемся с фрейма на начальную страницу
             return [text, width, height]
         if frame_num == 'frame2':
             frame = self.element_is_present(self.locators.SECOND_FRAME)
@@ -72,3 +73,30 @@ class FramesPage(BasePage):
             text = self.element_is_present(self.locators.TITLE_NAME).text
             return [text, width, height]
 
+
+class NestedFramesPage(BasePage):
+    locators = NestedFramesPageLocators
+
+    def check_nested_frame(self):
+        parent_frame = self.element_is_present(self.locators.PARENT_FRAME)
+        self.driver.switch_to.frame(parent_frame)
+        parent_text = self.element_is_present(self.locators.PARENT_FRAME_TEXT).text
+        child_frame = self.element_is_present(self.locators.CHILD_FRAME)
+        self.driver.switch_to.frame(child_frame)  # внутри родительского фрейма на дефолт окно переключатся не нужно
+        child_text = self.element_is_present(self.locators.CHILD_FRAME_TEXT).text
+        return parent_text, child_text
+
+
+class ModalWindowsPage(BasePage):
+    locators = ModalWindowsPageLocators
+
+    def check_modal_dialogs(self):
+        self.element_is_visible(self.locators.SMALL_MODAL_BUTTON).click()
+        title_small = self.element_is_visible(self.locators.SMALL_BUTTON_TITLE).text
+        body_small_text = self.element_is_visible(self.locators.SMALL_BUTTON_BODY).text
+        self.element_is_visible(self.locators.SMALL_MODAL_CLOSE_BUTTON).click()
+        self.element_is_visible(self.locators.LARGE_MODAL_BUTTON).click()
+        title_large = self.element_is_visible(self.locators.LARGE_BUTTON_TITLE).text
+        body_large_text = self.element_is_visible(self.locators.LARGE_BUTTON_BODY).text
+        self.element_is_visible(self.locators.LARGE_MODAL_CLOSE_BUTTON).click()
+        return [title_small, len(body_small_text)], [title_large, len(body_large_text)] #текст большой, по этому выведем его кол-во символов
