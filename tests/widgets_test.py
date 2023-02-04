@@ -1,6 +1,7 @@
 import time
 
-from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage
+from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderProgressBarPage, TabsPage, \
+    ToolTipsPage, MenuPage
 
 
 class TestWidgets:
@@ -53,3 +54,53 @@ class TestWidgets:
         def test_change_date_and_time(self, driver):
             date_picker_page = DatePickerPage(driver, "https://demoqa.com/date-picker")
             date_picker_page.open()
+
+
+    class TestSliderProgressBarPage:
+
+        def test_slider_page(self, driver):
+            slider_page = SliderProgressBarPage(driver, 'https://demoqa.com/slider')
+            slider_page.open()
+            value_before, value_after = slider_page.change_slider_value()
+            assert value_before != value_after
+
+        def test_progressbar(self, driver):
+            slider_page = SliderProgressBarPage(driver, 'https://demoqa.com/progress-bar')
+            slider_page.open()
+            after, before = slider_page.change_progress_bar()
+            assert before != after
+
+    class TestTabsPage:
+
+        def test_tabs_page_list(self, driver):
+            tabs_page = TabsPage(driver, "https://demoqa.com/tabs")
+            tabs_page.open()
+            what_button, what_content = tabs_page.check_tabs_list('what')
+            use_button, use_content = tabs_page.check_tabs_list('use')
+            origin_button, origin_content = tabs_page.check_tabs_list('origin')
+            assert what_button, what_content != 0
+
+
+    class TestToolTips:
+
+        def test_tool_tip(self, driver):
+            tooltips_page = ToolTipsPage(driver, "https://demoqa.com/tool-tips")
+            tooltips_page.open()
+            button_text, contrary_text, field_text, section_text = tooltips_page.check_tool_tips()
+            #assert button_text == "You hovered over the Button"
+            #assert contrary_text == "You hovered over the Contrary"
+            #assert field_text == "You hovered over the text field"
+            #assert section_text == "You hovered over the Button"
+            print(button_text)
+            print(contrary_text)
+            print(field_text)
+            print(section_text)
+
+
+    class TestMenu:
+
+        def test_menu(self, driver):
+            menu_page = MenuPage(driver, 'https://demoqa.com/menu')
+            menu_page.open()
+            data = menu_page.check_menu()
+            assert data == ['Main Item 1', 'Main Item 2', 'Sub Item', 'Sub Item', 'SUB SUB LIST »', 'Sub Sub Item 1', 'Sub Sub Item 2', 'Main Item 3']

@@ -37,6 +37,16 @@ class BasePage:
         action.double_click(element) #дабл кликаем этой функцией на элемент
         action.perform() #подтвердить действие
 
+    def action_drag_and_drop_by_offset(self, element, x_coords, y_coords): #тянем в стороны, указываем координаты х и у
+        action = ActionChains(self.driver)
+        action.drag_and_drop_by_offset(element, x_coords, y_coords)  #зажимает кнопку мыши и двигает  в указанном направлении
+        action.perform()
+
+    def action_move_to_element(self, element): #навести элемент
+        action = ActionChains(self.driver)
+        action.move_to_element(element)
+        action.perform()
+
 
     def action_right_click(self, element):
         action = ActionChains(self.driver)
