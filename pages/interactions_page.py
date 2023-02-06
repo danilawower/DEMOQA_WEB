@@ -1,6 +1,6 @@
 import random
 
-from locators.interactions_page_locators import SortablePageLocators, SelectablePageLocators
+from locators.interactions_page_locators import SortablePageLocators, SelectablePageLocators, ResizablePageLocators
 from pages.base_page import BasePage
 
 
@@ -55,6 +55,35 @@ class SelectablePage(BasePage):
         return active_element.text
 
 
+
+class ResizablePage(BasePage):
+    locators = ResizablePageLocators
+
+    def get_px_from_width_height(self, value_of_size): #берем значения высоты и ширины(у первого и второго)
+        width = value_of_size
+        height = value_of_size
+        return width, height
+
+
+    def get_max_min_size(self, element):
+        size = self.element_is_visible(element)
+        size_value = size.get_attribute("style") #значение размеров в атрибуте 'style' см. devtools
+        return size_value
+
+    def change_size_resizable_box(self):
+        self.action_drag_and_drop_by_offset(self.element_is_present(self.locators.RESIZABLE_BOX_HANDLE), 200, 100)
+        max_size = self.get_px_from_width_height(self.get_max_min_size(self.locators.RESIZABLE_BOX))
+        self.action_drag_and_drop_by_offset(self.element_is_present(self.locators.RESIZABLE_BOX_HANDLE), -300, -100)
+        min_size = self.get_px_from_width_height(self.get_max_min_size(self.locators.RESIZABLE_BOX))
+        return min_size, max_size
+
+    def change_size_resizable(self):
+        self.action_drag_and_drop_by_offset(self.element_is_present(self.locators.RESIZABLE_HANDLE),
+                                            random.randint(1, 300), random.randint(1, 300))
+        max_size = self.get_px_from_width_height(self.get_max_min_size(self.locators.RESIZABLE))
+        self.action_drag_and_drop_by_offset(self.element_is_present(self.locators.RESIZABLE_HANDLE), -300, -100)
+        min_size = self.get_px_from_width_height(self.get_max_min_size(self.locators.RESIZABLE))
+        return min_size, max_size
 
 
 
