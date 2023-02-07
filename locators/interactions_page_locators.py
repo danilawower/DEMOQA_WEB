@@ -25,3 +25,32 @@ class ResizablePageLocators:
     RESIZABLE_BOX = (By.XPATH, "//div[@id='resizableBoxWithRestriction']")
     RESIZABLE_HANDLE = (By.XPATH, "//div[@id='resizable']//span[@class='react-resizable-handle "
                                   "react-resizable-handle-se']")
+
+
+class DroppablePageLocators:
+
+#simple
+    SIMPLE_TAB = (By.XPATH, "//a[@id='droppableExample-tab-simple']")
+    DRAG_ME_SIMPLE = (By.XPATH, "//div[@id='draggable']")
+    DROP_HERE_SIMPLE = (By.XPATH, "//div[@id='simpleDropContainer']//div[@id='droppable']")
+
+#accept
+    ACCEPT_TAB = (By.XPATH, "//a[@id='droppableExample-tab-accept']")
+    ACCEPTABLE = (By.XPATH, "//div[@id='acceptable']")
+    NOT_ACCEPTABLE = (By.XPATH, "//div[@id='notAcceptable']")
+    DROP_HERE_ACCEPT = (By.XPATH, "//div[@id='acceptDropContainer']//div[@id='droppable']")
+
+#prevent
+    PREVENT_TAB = (By.XPATH, "//a[@id='droppableExample-tab-preventPropogation']")
+    DRAG_ME_PREVENT = (By.XPATH, "//div[@id='dragBox']")
+    OUTER_DROPPABLE_NOT = (By.XPATH, "//div[@id='notGreedyDropBox']")
+    INNER_DROPPABLE_NOT = (By.XPATH, "//div[@id='notGreedyInnerDropBox']")
+    INNER_DROPPABLE_GREEDY = (By.XPATH, "//div[@id='greedyDropBoxInner']")
+    OUTER_DROPPABLE_GREEDY = (By.XPATH, "//div[@id='greedyDropBox']")
+
+#revert
+    REVERT_TAB = (By.XPATH, "//a[@id='droppableExample-tab-revertable']")
+    WILL_REVERT = (By.XPATH, "//div[@id='revertable']")
+    NOT_REVERT = (By.XPATH, "//div[@id='notRevertable']")
+    DROP_HERE_REVERT = (By.XPATH, "//div[@id='revertableDropContainer']//div[@id='droppable']")
+

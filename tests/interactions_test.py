@@ -1,4 +1,4 @@
-from pages.interactions_page import SortablePage, SelectablePage, ResizablePage
+from pages.interactions_page import SortablePage, SelectablePage, ResizablePage, DroppablePage
 
 
 class TestInteractions:
@@ -33,3 +33,33 @@ class TestInteractions:
             resizable_page.open()
             rez = resizable_page.change_size_resizable_box()
             print(rez)
+
+
+    class TestDroppable:
+
+        def test_simple(self, driver):
+            droppable_page = DroppablePage(driver, 'https://demoqa.com/droppable')
+            droppable_page.open()
+            text = droppable_page.drop_simple()
+            assert text == "Dropped!"
+
+        def test_acceptable(self, driver):
+            droppable_page = DroppablePage(driver, 'https://demoqa.com/droppable')
+            droppable_page.open()
+            accept, not_accept = droppable_page.drop_accept()
+            assert accept != not_accept
+
+        def test_prevent(self, driver):
+            droppable_page = DroppablePage(driver, 'https://demoqa.com/droppable')
+            droppable_page.open()
+            not_greedy, not_greedy_inner, greedy, greedy_inner = droppable_page.drop_prevent()
+            print(not_greedy)
+            print(not_greedy_inner)
+            print(greedy)
+            print(greedy_inner)
+
+        def test_revert(self, driver):
+            droppable_page = DroppablePage(driver, 'https://demoqa.com/droppable')
+            droppable_page.open()
+            droppable_page.drop_revert('will')
+            droppable_page.drop_revert('not_will')
