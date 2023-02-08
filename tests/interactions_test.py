@@ -1,4 +1,4 @@
-from pages.interactions_page import SortablePage, SelectablePage, ResizablePage, DroppablePage
+from pages.interactions_page import SortablePage, SelectablePage, ResizablePage, DroppablePage, DraggablePage
 
 
 class TestInteractions:
@@ -63,3 +63,14 @@ class TestInteractions:
             droppable_page.open()
             droppable_page.drop_revert('will')
             droppable_page.drop_revert('not_will')
+
+
+    class TestDraggablePage:
+
+        def test_simple_drag(self, driver):
+            draggable_page = DraggablePage(driver, 'https://demoqa.com/dragabble')
+            draggable_page.open()
+            before_position, after_position = draggable_page.simple_dra_box()
+            assert before_position != after_position
+
+

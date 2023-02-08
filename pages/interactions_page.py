@@ -2,7 +2,7 @@ import random
 import time
 
 from locators.interactions_page_locators import SortablePageLocators, SelectablePageLocators, ResizablePageLocators, \
-    DroppablePageLocators
+    DroppablePageLocators, DraggablePageLocators
 from pages.base_page import BasePage
 
 
@@ -124,9 +124,9 @@ class DroppablePage(BasePage):
         return text_not_greedy_box, text_not_greedy_inner_box, text_greedy_box, text_greedy_inner_box
 
     def drop_revert(self, type_drag):
-        self.element_is_visible(self.locators.REVERT_TAB).click()
         drags = {'will': {'revert': self.locators.WILL_REVERT},
                  'not_will': {'revert': self.locators.NOT_REVERT}}
+        self.element_is_visible(self.locators.REVERT_TAB).click()
         revert = self.element_is_visible(drags[type_drag]['revert'])
         drop_div = self.element_is_visible(self.locators.DROP_HERE_REVERT)
         self.action_drag_and_drop_to_element(revert, drop_div)
@@ -134,5 +134,23 @@ class DroppablePage(BasePage):
         time.sleep(1)
         position_after_revert = revert.get_attribute('style')
         return position_after_move, position_after_revert
+
+
+class DraggablePage(BasePage):
+    locators = DraggablePageLocators()
+
+
+    def get_before_and_after_position(self, drag_element): #указываем что будем тянуть элемент для _by_offset
+        self.action_drag_and_drop_by_offset(drag_element, random.randint(0, 50), random.randint(0, 50)) #указали элем и коорды
+        before_position = drag_element.get_attribute('style') #что нам взять и что вернуть
+        self.action_drag_and_drop_by_offset(drag_element, random.randint(0, 50), random.randint(0, 50))
+        after_position = drag_element.get_attribute('style')
+        return before_position, after_position
+
+
+    def simple_dra_box(self):
+        drag_div = self.element_is_visible(self.locators.DRAG_ME) #тут уже указали элемент
+        before_position, after_position = self.get_before_and_after_position(drag_div) #делаем весь сценарий прошлой функции подставляя элемент
+        return before_position, after_position
 
 

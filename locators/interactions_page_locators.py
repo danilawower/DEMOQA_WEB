@@ -54,3 +54,14 @@ class DroppablePageLocators:
     NOT_REVERT = (By.XPATH, "//div[@id='notRevertable']")
     DROP_HERE_REVERT = (By.XPATH, "//div[@id='revertableDropContainer']//div[@id='droppable']")
 
+
+class DraggablePageLocators:
+    #simple
+    DRAG_ME = (By.XPATH, "//div[@id='dragBox']")
+    AXIS_TAB = (By.XPATH, "//a[@id='draggableExample-tab-axisRestriction']")
+    ONLY_X = (By.XPATH, "//div[@id='restrictedX']")
+    ONLY_Y = (By.XPATH, "//div[@id='restrictedY']")
+
+
+
+
