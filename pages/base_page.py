@@ -2,8 +2,12 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
 
+from locators.telegram_locators import PersonalAccountLocators
+
 
 class BasePage:
+    locators = PersonalAccountLocators
+
     def __init__(self, driver, url):
         self.driver = driver
         self.url = url
@@ -29,6 +33,7 @@ class BasePage:
     def element_is_clickable(self, locator, timeout=5): #кликабельный элемент
         return wait(self.driver, timeout).until(EC.element_to_be_clickable(locator))
 
+
     def go_to_element(self, element): #скроллим до элемента
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
@@ -46,6 +51,14 @@ class BasePage:
         action = ActionChains(self.driver)
         action.drag_and_drop(what, where)
         action.perform()
+
+
+    def login_into(self):
+        self.element_is_clickable(self.locators.LOGIN_BUTTON).click()
+        self.element_is_visible(self.locators.LOGIN_EMAIL_FIELD).send_keys('danilawower2@gmail.com')
+        self.element_is_visible(self.locators.LOGIN_PASSWORD_FIELD).send_keys('132546Da')
+        self.element_is_clickable(self.locators.LOGIN_ENTER).click()
+
 
 
     def action_move_to_element(self, element): #навести элемент

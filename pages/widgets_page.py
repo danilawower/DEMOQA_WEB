@@ -179,6 +179,10 @@ class MenuPage(BasePage):
             data.append(item.text) #подставляем к каждому итему .text чтобы забрать его текст
         return data #возвращаем текст списком
 
+    def check_menu2(self):
+        item = self.element_is_present(self.locators.MENU2)
+        self.action_move_to_element(item)
+
 
 
 

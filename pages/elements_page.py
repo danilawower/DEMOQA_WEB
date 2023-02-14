@@ -47,9 +47,8 @@ class CheckBoxPage(BasePage):
     def click_random_checkbox(self):
         item_list = self.elements_are_visible(
             self.locators.ITEM_LIST)  # создаём список видимых локаторов(много чекбоксов)
-        #  for item in item_list: создаем список элементов в этом самом листе
-        count = 21
-        while count != 0:
+        count = 21  # всего их 21 штука
+        while count != 0:  # когда число не равно нулю то делаем следующее:
             item = item_list[random.randint(1, 15)]  # делаем рандомную выборку элементов в списке
             if count > 0:
                 self.go_to_element(item)
@@ -150,7 +149,8 @@ class ButtonsPage(BasePage):
     def click_on_different_button(self, type_click):  # тип клика, можно задать разные типы
         if type_click == "double":
             self.action_double_click(self.element_is_visible(self.locators.DOUBLE_BUTTON))
-            return self.check_clicked_on_the_button(self.locators.SUCCESS_DOUBLE)  # ретёрним результаты используя функцию ниже
+            return self.check_clicked_on_the_button(
+                self.locators.SUCCESS_DOUBLE)  # ретёрним результаты используя функцию ниже
 
         if type_click == "right":
             self.action_right_click(self.element_is_visible(self.locators.RIGHT_CLICK_BUTTON))
@@ -163,24 +163,24 @@ class ButtonsPage(BasePage):
     def check_clicked_on_the_button(self, element):
         return self.element_is_present(element).text
 
+
 class LinksPage(BasePage):
     locators = LinksPageLocators()
 
     def check_new_tab_simple_link(self):
         simple_link = self.elements_are_visible(self.locators.SIMPLE_LINK)
         link_href = simple_link.getattribute('href')
-        request = requests.get(f"{link_href}") #request функция запросов
+        request = requests.get(f"{link_href}")  # request функция запросов
         if request.status_code == 200:
             simple_link.click()
-            self.driver.switch_to.window(self.driver.window_handles[1]) #переключает на окно с иднексом один(второе)
+            self.driver.switch_to.window(self.driver.window_handles[1])  # переключает на окно с иднексом один(второе)
             url = self.driver.current_url
             return link_href, url
         else:
             return link_href, request.status_code
 
-
     def check_broken_link(self, url):
-        request = requests.get(url) #этот юрл мы указываем в тесте
+        request = requests.get(url)  # этот юрл мы указываем в тесте
         if request.status_code == 200:
             self.element_is_present(self.locators.BAD_REQUEST).click()
         else:
@@ -192,16 +192,18 @@ class UploadAndDownloadPage(BasePage):
 
     def upload_file(self):
         file_name, path = generated_file()
-        self.element_is_present(self.locators.UPLOAD_FILE).send_keys(path) #отправляем кейсами сам путь файла, из generator.py
-        os.remove(path) #удаление операц. системой файла
+        self.element_is_present(self.locators.UPLOAD_FILE).send_keys(
+            path)  # отправляем кейсами сам путь файла, из generator.py
+        os.remove(path)  # удаление операц. системой файла
         text = self.element_is_present(self.locators.UPLOADED_FILE).text
 
     def download_file(self):
-        link = self.element_is_present(self.locators.DOWNLOAD_FILE).get_attribute('href') #достаём аттрибут элемента. гиперссылку например
-        link_b = base64.b64decode(link) #указываем кодировани ссылки /jpeg;base64,
+        link = self.element_is_present(self.locators.DOWNLOAD_FILE).get_attribute(
+            'href')  # достаём аттрибут элемента. гиперссылку например
+        link_b = base64.b64decode(link)  # указываем кодировани ссылки /jpeg;base64,
         path_name_file = rf'C:\Users\daniil\PycharmProjects\automation_qa_course\filetest{random.randint(0, 999)}.jpg'
-        with open(path_name_file, 'wb+') as f: #wb+ записать и создать
-            s = link_b.find(b'\xff\xd8') #используемый декод бейз64 файла лежит в debug
+        with open(path_name_file, 'wb+') as f:  # wb+ записать и создать
+            s = link_b.find(b'\xff\xd8')  # используемый декод бейз64 файла лежит в debug
             f.write(link_b[s:])
         os.remove(path_name_file)
 
@@ -213,13 +215,13 @@ class DynamicPropertiesPage(BasePage):
         time.sleep(6)
         try:
             self.element_is_clickable(self.locators.ENABLE_BUTTON)
-        except TimeoutException: #добавляем таймаут в исключения
+        except TimeoutException:  # добавляем таймаут в исключения
             return False
         return True
 
     def check_color_change(self):
         color_button = self.element_is_present(self.locators.COLOR_CHANGE_BUTTON)
-        color_button_before = color_button.value_of_css_property('color') #метод берущий свойство CSS (например цвет)
+        color_button_before = color_button.value_of_css_property('color')  # метод берущий свойство CSS (например цвет)
         time.sleep(6)
         color_button_after = color_button.value_of_css_property('color')
         return color_button_after, color_button_before
@@ -231,18 +233,3 @@ class DynamicPropertiesPage(BasePage):
         except TimeoutException:
             return False
         return True
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

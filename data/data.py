@@ -10,9 +10,11 @@ class Person:
     salary: int = None
     department: str = None
     email: str = None
+    index: int = None
     current_address: str = None
     permanent_address: str = None
     mobile: str = None
+    country: str = None
 
 
 @dataclasses.dataclass

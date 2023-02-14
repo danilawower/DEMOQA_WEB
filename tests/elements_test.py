@@ -1,6 +1,6 @@
 import random
 import time
-
+import allure
 from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage, \
     UploadAndDownloadPage, DynamicPropertiesPage
 
@@ -13,7 +13,7 @@ class TestElements:  #весь раздел элементов
             text_box_page.open()
             text_box_page.fill_all_fields() #здесь добавляем метод с текстБоксПейджа где заполняем данными поля
             text_box_page.check_filled_form() #проверить чек филд и спринтить ретёрны из элемент пейджа
-            print(text_box_page.check_filled_form())
+            pass
 
     class TestCheckBox:
         def test_check_box(self, driver):
@@ -21,6 +21,7 @@ class TestElements:  #весь раздел элементов
             check_box_page.open()
             check_box_page.open_full_list()
             check_box_page.click_random_checkbox()
+            pass
 
 
     class TestRadioButton:
@@ -28,6 +29,7 @@ class TestElements:  #весь раздел элементов
             radio_button_page = RadioButtonPage(driver, 'https://demoqa.com/radio-button')
             radio_button_page.open()
             radio_button_page.click_on_the_radio_button()
+            pass
             #radio_button_page.click_on_the_radio_button('yes')
             #radio_button_page.click_on_the_radio_button('no')
             #radio_button_page.click_on_the_radio_button('impressive')
@@ -57,8 +59,6 @@ class TestElements:  #весь раздел элементов
             web_table_page.search_some_person(lastname)
             age = web_table_page.update_person_info()
             row = web_table_page.check_search_person()
-            print(age)
-            print(row)
             assert lastname in row
 
 
@@ -81,6 +81,7 @@ class TestElements:  #весь раздел элементов
             links_page = LinksPage(driver, "https://demoqa.com/links")
             links_page.open()
             links_page.check_new_tab_simple_link()
+            pass
 
 
         def test_check_broken_link(self, driver):
@@ -96,12 +97,15 @@ class TestElements:  #весь раздел элементов
             upload_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
             upload_download_page.open()
             upload_download_page.upload_file()
+            pass
 
 
         def test_download_file(self, driver):
             upload_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
             upload_download_page.open()
             upload_download_page.download_file()
+            pass
+
 
     class TestDynamicProperties:
         def test_dynamic_properties(self, driver):
