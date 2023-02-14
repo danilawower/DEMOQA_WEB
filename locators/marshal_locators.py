@@ -67,9 +67,10 @@ class MenuHoverOverPageLocators:
 
 class CornerMenuLocators:
     MAIN_BUTTON = (By.CSS_SELECTOR, "a[class='b-link-toggler']")
-    ELEMENTS = (By.XPATH, "//a[contains(@class, 'b-link')]")
+    ELEMENTS = (By.XPATH, "//div[@class='b-ptsip-popup collapse b-ptsip-popup-without-dialog']//a[contains(@class, 'b-link')]")
     LOGIN_BUTTON = (
         By.XPATH, "//div[@class='b-header-top-container']//a[@class='b-link-user'][contains(text(),'Вход')]")
     LOGIN_EMAIL_FIELD = (By.XPATH, "//input[@id='customer_session_email']")
     LOGIN_PASSWORD_FIELD = (By.XPATH, "//input[@id='customer_session_password']")
     LOGIN_ENTER = (By.XPATH, "//input[@class='btn-reg']")
+    ELEMENTS2 = (By.XPATH, "//span[@class='b-link-head']")

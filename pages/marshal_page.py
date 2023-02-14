@@ -90,7 +90,8 @@ class MenuHoverOverPage(BasePage):
     def check_dropdown(self):
         dropdown = self.element_is_present(self.locators.CLIENTAM)
         self.action_move_to_element(dropdown)
-        sub_menu = {'Blog': self.locators.BLOG, 'Novosti': self.locators.NOVOSTI, 'OKompanii': self.locators.O_KOMPANII, 'Kontakty': self.locators.KONTAKTY}
+        sub_menu = {'Blog': self.locators.BLOG, 'Novosti': self.locators.NOVOSTI, 'OKompanii': self.locators.O_KOMPANII,
+                    'Kontakty': self.locators.KONTAKTY}
         self.element_is_visible(random.choice(list(sub_menu.values()))).click()
         text = self.element_is_visible(self.locators.H1).text
         return text
@@ -102,8 +103,10 @@ class CornerMenuPage(BasePage):
     def check_corner_menu(self):
         self.login_into()
         self.element_is_clickable(self.locators.MAIN_BUTTON).click()
-        menu = self.elements_are_visible(self.locators.ELEMENTS)
-        print(type(menu))
+        menu = random.sample(self.elements_are_visible(self.locators.ELEMENTS), k=1)[0].click()
+
+
+
 
 
 
