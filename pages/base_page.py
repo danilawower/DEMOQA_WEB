@@ -2,7 +2,7 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
 
-from locators.telegram_locators import PersonalAccountLocators
+from locators.marshal_locators import PersonalAccountLocators
 
 
 class BasePage:

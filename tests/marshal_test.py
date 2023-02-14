@@ -1,6 +1,6 @@
 import time
 
-from pages.telegram_page import PersonalAccountPage, RegistrationPage, ChangePersonalInformationPage, \
+from pages.marshal_page import PersonalAccountPage, RegistrationPage, ChangePersonalInformationPage, \
     ProductCatalogPage, MenuHoverOverPage, CornerMenuPage
 
 

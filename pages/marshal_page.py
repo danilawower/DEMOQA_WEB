@@ -2,7 +2,7 @@ import random
 import time
 
 from generator.generator import generated_person
-from locators.telegram_locators import PersonalAccountLocators, RegistrationLocators, ChangePersonalInformationLocators, \
+from locators.marshal_locators import PersonalAccountLocators, RegistrationLocators, ChangePersonalInformationLocators, \
     ProductCatalogLocators, MenuHoverOverPageLocators, CornerMenuLocators
 from pages.base_page import BasePage
 
