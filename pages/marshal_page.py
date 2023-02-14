@@ -65,7 +65,7 @@ class ChangePersonalInformationPage(BasePage):
 class ProductCatalogPage(BasePage):
     locators = ProductCatalogLocators()
 
-    def check_product_menu(self):
+    def check_product_catalog(self):
         self.element_is_clickable(self.locators.PRODUCT_CATALOG).click()
         self.element_is_clickable(self.locators.MASLA).click()
         self.element_is_clickable(self.locators.MOTORNIE_MASLA).click()
@@ -104,6 +104,10 @@ class CornerMenuPage(BasePage):
         self.login_into()
         self.element_is_clickable(self.locators.MAIN_BUTTON).click()
         menu = random.sample(self.elements_are_visible(self.locators.ELEMENTS), k=1)[0].click()
+        time.sleep(5)
+
+
+
 
 
 

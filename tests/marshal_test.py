@@ -36,7 +36,7 @@ class TestProductCatalog:
     def test_product_catalog(self, driver):
         product_catalog = ProductCatalogPage(driver, 'https://marshal.ru/')
         product_catalog.open()
-        product_catalog.check_product_menu()
+        product_catalog.check_product_catalog()
         time.sleep(5)
 
 
