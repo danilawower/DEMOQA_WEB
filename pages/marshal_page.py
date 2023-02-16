@@ -1,9 +1,10 @@
 import random
 import time
+from selenium.webdriver.common.keys import Keys
 
 from generator.generator import generated_person
 from locators.marshal_locators import PersonalAccountLocators, RegistrationLocators, ChangePersonalInformationLocators, \
-    ProductCatalogLocators, MenuHoverOverPageLocators, CornerMenuLocators
+    ProductCatalogLocators, MenuHoverOverPageLocators, CornerMenuLocators, CarDropDownPageLocators
 from pages.base_page import BasePage
 
 
@@ -69,7 +70,6 @@ class ProductCatalogPage(BasePage):
         self.element_is_clickable(self.locators.PRODUCT_CATALOG).click()
         self.element_is_clickable(self.locators.MASLA).click()
         self.element_is_clickable(self.locators.MOTORNIE_MASLA).click()
-
         item_list = self.elements_are_present(self.locators.PROIZVODITEL_LIST)
         count = 164
         while count != 0:
@@ -104,7 +104,22 @@ class CornerMenuPage(BasePage):
         self.login_into()
         self.element_is_clickable(self.locators.MAIN_BUTTON).click()
         menu = random.sample(self.elements_are_visible(self.locators.ELEMENTS), k=1)[0].click()
-        time.sleep(5)
+
+
+
+class CarDropDownPage(BasePage):
+    locators = CarDropDownPageLocators()
+
+    def check_dropdown_car_auto_choice(self):
+        self.element_is_clickable(self.locators.CAR_MARK_BUTTON).click()
+        car_mark = random.sample(self.elements_are_present(self.locators.CAR_MARK_LOCATOR), k=1)[0].click()
+        car_title = self.element_is_present(self.locators.CAR_TITLE).get_attribute('title')
+        self.element_is_clickable(self.locators.CAR_MODEL_BUTTON).click()
+        car_model = random.sample(self.elements_are_present(self.locators.CAR_MODEL_LOCATOR), k=1)[0].click()
+        self.element_is_clickable(self.locators.CAR_PRESENTATION_BUTTON).click()
+        self.element_is_clickable(self.locators.SEARCH_BUTTON).click()
+        text = self.element_is_present(self.locators.H1).text
+        return text, car_title
 
 
 

@@ -1,7 +1,7 @@
 import time
 
 from pages.marshal_page import PersonalAccountPage, RegistrationPage, ChangePersonalInformationPage, \
-    ProductCatalogPage, MenuHoverOverPage, CornerMenuPage
+    ProductCatalogPage, MenuHoverOverPage, CornerMenuPage, CarDropDownPage
 
 
 class TestLogin:
@@ -55,6 +55,17 @@ class TestCornerMenu:
         corner_menu = CornerMenuPage(driver, 'https://marshal.ru/')
         corner_menu.open()
         corner_menu.check_corner_menu()
+
+
+class TestCarDropdown:
+
+    def test_car_dropdown(self, driver):
+        car_dropdown = CarDropDownPage(driver, 'https://marshal.ru/')
+        car_dropdown.open()
+        header, car_mark = car_dropdown.check_dropdown_car_auto_choice()
+        assert car_mark in header
+
+
 
 
 

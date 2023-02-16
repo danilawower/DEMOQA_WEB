@@ -74,3 +74,14 @@ class CornerMenuLocators:
     LOGIN_PASSWORD_FIELD = (By.XPATH, "//input[@id='customer_session_password']")
     LOGIN_ENTER = (By.XPATH, "//input[@class='btn-reg']")
     ELEMENTS2 = (By.XPATH, "//span[@class='b-link-head']")
+
+
+class CarDropDownPageLocators:
+    CAR_MARK_BUTTON = (By.XPATH, "//span[@class='select2-selection__rendered'][@title='Выбрать марку']")
+    CAR_MARK_LOCATOR = (By.XPATH, "//li[@class='select2-results__option']")
+    CAR_MODEL_BUTTON = (By.XPATH, "//span[@class='select2-selection__rendered'][@title='Выберите модель']")
+    CAR_MODEL_LOCATOR = (By.XPATH, "//li[@class='select2-results__option'][@role='treeitem']")
+    CAR_PRESENTATION_BUTTON = (By.XPATH, "//span[@id='select2-type_id_layout-container']")
+    SEARCH_BUTTON = (By.XPATH, "//button[@class='b-btn-send']")
+    H1 = (By.XPATH, "//h1[@class='main-title']")
+    CAR_TITLE = (By.XPATH, "//span[@class='select2-selection__rendered'][@id='select2-brand_id_layout-container']")
