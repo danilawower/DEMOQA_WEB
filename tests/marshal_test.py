@@ -1,7 +1,7 @@
 import time
 
 from pages.marshal_page import PersonalAccountPage, RegistrationPage, ChangePersonalInformationPage, \
-    ProductCatalogPage, MenuHoverOverPage, CornerMenuPage, CarDropDownPage
+    ProductCatalogPage, MenuHoverOverPage, CornerMenuPage, CarDropDownPage, ProductCatalogNewTabPage
 
 
 class TestLogin:
@@ -64,6 +64,25 @@ class TestCarDropdown:
         car_dropdown.open()
         header, car_mark = car_dropdown.check_dropdown_car_auto_choice()
         assert car_mark in header
+
+    def test_car_dropdown_handtype(self, driver):
+        car_dropdown = CarDropDownPage(driver, 'https://marshal.ru/')
+        car_dropdown.open()
+        car_mark, header = car_dropdown.check_dropdown_car_type_choice()
+        assert car_mark in header
+
+
+class TestProductCatalogNewTab:
+
+    def test_product_catalog_new_tab(self, driver):
+        product_catalog = ProductCatalogNewTabPage(driver, "https://marshal.ru/")
+        product_catalog.open()
+        text1, text2, text3, text4, text5 = product_catalog.check_product_catalog_new_tab()
+        assert len(text1) > 0
+        assert len(text2) > 0
+        assert len(text3) > 0
+        assert len(text4) > 0
+        assert len(text5) > 0
 
 
 

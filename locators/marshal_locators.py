@@ -30,6 +30,7 @@ class PersonalAccountLocators:
     LOGOUT_BUTTON = (By.XPATH, "//div[@class='b-header-top-container']//a[contains(text(),'Выход')]")
 
 
+
 class ChangePersonalInformationLocators:
     CHANGE_INFO_BUTTON = (By.XPATH, "//a[contains(text(),'Редактировать профиль')]")
     LOGIN_BUTTON = (
@@ -85,3 +86,16 @@ class CarDropDownPageLocators:
     SEARCH_BUTTON = (By.XPATH, "//button[@class='b-btn-send']")
     H1 = (By.XPATH, "//h1[@class='main-title']")
     CAR_TITLE = (By.XPATH, "//span[@class='select2-selection__rendered'][@id='select2-brand_id_layout-container']")
+    CAR_MARK_FIELD = (By.XPATH, "//input[@role='textbox']")
+    CAR_MODEL_FIELD = (By.XPATH, "//input[@role='textbox']")
+
+
+class ProductCatalogNewTabLocators:
+    PRODUCT_CATALOG = (By.XPATH, "//button[@class='b-hbc-catalog-toggler']")
+    SHINY = (By.XPATH, "//a[contains(text(),'Шины')]")
+    ZAPCHASTY = (By.XPATH, "//a[contains(text(),'Запчасти для ТО')]")
+    ACCUMULATOR = (By.XPATH, "//a[contains(text(),'Аккумуляторы')]")
+    MENU = (By.XPATH, "//div[@class='b-mc-catalog-list']//div[@class='b-item']")
+    H1 = (By.XPATH, "//h1[@class='main-title']")
+    #MENU_LIST = (By.XPATH, "//ul[@class='b-hbc-catalog-popup dropdown-menu show']//a[@target='_self']    /text()[not(" "normalize-space() = 'Моторные масла')][not(normalize-space() = 'Трансмиссионные ""масла/ГУР')]")
+

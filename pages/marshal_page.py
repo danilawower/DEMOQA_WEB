@@ -2,9 +2,10 @@ import random
 import time
 from selenium.webdriver.common.keys import Keys
 
-from generator.generator import generated_person
+from generator.generator import generated_person, generated_car
 from locators.marshal_locators import PersonalAccountLocators, RegistrationLocators, ChangePersonalInformationLocators, \
-    ProductCatalogLocators, MenuHoverOverPageLocators, CornerMenuLocators, CarDropDownPageLocators
+    ProductCatalogLocators, MenuHoverOverPageLocators, CornerMenuLocators, CarDropDownPageLocators, \
+    ProductCatalogNewTabLocators
 from pages.base_page import BasePage
 
 
@@ -112,14 +113,54 @@ class CarDropDownPage(BasePage):
 
     def check_dropdown_car_auto_choice(self):
         self.element_is_clickable(self.locators.CAR_MARK_BUTTON).click()
-        car_mark = random.sample(self.elements_are_present(self.locators.CAR_MARK_LOCATOR), k=1)[0].click()
+        random.sample(self.elements_are_present(self.locators.CAR_MARK_LOCATOR), k=1)[0].click()
         car_title = self.element_is_present(self.locators.CAR_TITLE).get_attribute('title')
         self.element_is_clickable(self.locators.CAR_MODEL_BUTTON).click()
-        car_model = random.sample(self.elements_are_present(self.locators.CAR_MODEL_LOCATOR), k=1)[0].click()
+        random.sample(self.elements_are_present(self.locators.CAR_MODEL_LOCATOR), k=1)[0].click()
         self.element_is_clickable(self.locators.CAR_PRESENTATION_BUTTON).click()
         self.element_is_clickable(self.locators.SEARCH_BUTTON).click()
         text = self.element_is_present(self.locators.H1).text
         return text, car_title
+
+    def check_dropdown_car_type_choice(self):
+        car_mark = random.sample(next(generated_car()).car_name, k=1)
+        self.element_is_clickable(self.locators.CAR_MARK_BUTTON).click()
+        car_mark_field = self.element_is_visible(self.locators.CAR_MARK_FIELD)
+        car_mark_field.send_keys(car_mark)
+        car_mark_field.send_keys(Keys.ENTER)
+        car_title = self.element_is_present(self.locators.CAR_TITLE).get_attribute('title')
+        self.element_is_clickable(self.locators.CAR_MODEL_BUTTON).click()
+        car_model_field = self.element_is_visible(self.locators.CAR_MODEL_FIELD)
+        car_model_field.send_keys(random.randint(1, 3))
+        car_model_field.send_keys(Keys.ENTER)
+        self.element_is_clickable(self.locators.SEARCH_BUTTON).click()
+        text = self.element_is_present(self.locators.H1).text
+        return car_title, text
+
+
+
+class ProductCatalogNewTabPage(BasePage):
+    locators = ProductCatalogNewTabLocators()
+
+    def check_product_catalog_new_tab(self):
+        menu_list = self.elements_are_visible(self.locators.MENU)
+        for item in menu_list:
+            self.action_open_new_tab(item)
+        self.driver.switch_to.window(self.driver.window_handles[1])
+        text1 = self.element_is_present(self.locators.H1).text
+        self.driver.switch_to.window(self.driver.window_handles[2])
+        text2 = self.element_is_present(self.locators.H1).text
+        self.driver.switch_to.window(self.driver.window_handles[3])
+        text3 = self.element_is_present(self.locators.H1).text
+        self.driver.switch_to.window(self.driver.window_handles[4])
+        text4 = self.element_is_present(self.locators.H1).text
+        self.driver.switch_to.window(self.driver.window_handles[5])
+        text5 = self.element_is_present(self.locators.H1).text
+        return text1, text2, text3, text4, text5
+
+
+
+
 
 
 

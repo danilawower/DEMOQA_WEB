@@ -1,6 +1,7 @@
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 
 from locators.marshal_locators import PersonalAccountLocators
 
@@ -51,6 +52,14 @@ class BasePage:
         action = ActionChains(self.driver)
         action.drag_and_drop(what, where)
         action.perform()
+
+    def action_open_new_tab(self, element):
+        action = ActionChains(self.driver)
+        action.key_down(Keys.CONTROL)
+        action.click(element)
+        action.key_up(Keys.CONTROL)
+        action.perform()
+
 
 
     def login_into(self):

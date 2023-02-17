@@ -1,6 +1,6 @@
 import random
 
-from data.data import Person, Color, Date
+from data.data import Person, Color, Date, Car
 from faker import Faker  # библиотека для данных
 
 faker_ru = Faker('ru_RU')
@@ -46,4 +46,10 @@ def generated_date():
         month=fake_en.month_name(),
         day=fake_en.day_of_month(),
         time="12:00",
+    )
+
+
+def generated_car():
+    yield Car(
+        car_name=['ACURA', 'ALFA ROMEO', 'DODGE', 'FIAT', 'HONDA', 'ZAZ', 'CHERY', 'DAF']
     )

@@ -28,3 +28,8 @@ class Date:
     month: str = None
     year: str = None
     time: str = None
+
+
+@dataclasses.dataclass
+class Car:
+    car_name: list = None
