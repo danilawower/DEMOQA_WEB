@@ -98,6 +98,7 @@ class MenuHoverOverPage(BasePage):
         return text
 
 
+
 class CornerMenuPage(BasePage):
     locators = CornerMenuLocators()
 

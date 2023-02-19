@@ -3,6 +3,9 @@ import os
 import random
 import requests
 from selenium.common import TimeoutException
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
 from generator.generator import generated_person, generated_file
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
     WebTablePageLocators, ButtonsPageLocators, LinksPageLocators, UploadAndDownloadPageLocators, \
@@ -197,7 +200,7 @@ class UploadAndDownloadPage(BasePage):
         os.remove(path)  # удаление операц. системой файла
         text = self.element_is_present(self.locators.UPLOADED_FILE).text
 
-    def download_file(self):
+    def download_file2(self):
         link = self.element_is_present(self.locators.DOWNLOAD_FILE).get_attribute(
             'href')  # достаём аттрибут элемента. гиперссылку например
         link_b = base64.b64decode(link)  # указываем кодировани ссылки /jpeg;base64,
@@ -206,6 +209,11 @@ class UploadAndDownloadPage(BasePage):
             s = link_b.find(b'\xff\xd8')  # используемый декод бейз64 файла лежит в debug
             f.write(link_b[s:])
         os.remove(path_name_file)
+
+    def download_file(self):
+        link = self.element_is_clickable(self.locators.DOWNLOAD_FILE).click()
+
+
 
 
 class DynamicPropertiesPage(BasePage):

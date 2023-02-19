@@ -34,6 +34,7 @@ def generated_file():
     return file.name, path  # возвращаем имя созданного файла и путь к нему
 
 
+
 def generated_color():
     yield Color(
         color_name=['Red', 'Green', 'Yellow', 'Purple']

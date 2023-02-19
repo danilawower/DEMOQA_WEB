@@ -97,14 +97,14 @@ class TestElements:  #весь раздел элементов
             upload_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
             upload_download_page.open()
             upload_download_page.upload_file()
-            pass
+
 
 
         def test_download_file(self, driver):
             upload_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
             upload_download_page.open()
             upload_download_page.download_file()
-            pass
+
 
 
     class TestDynamicProperties:
