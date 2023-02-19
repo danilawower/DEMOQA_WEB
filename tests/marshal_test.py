@@ -1,7 +1,8 @@
 import time
 
 from pages.marshal_page import PersonalAccountPage, RegistrationPage, ChangePersonalInformationPage, \
-    ProductCatalogPage, MenuHoverOverPage, CornerMenuPage, CarDropDownPage, ProductCatalogNewTabPage
+    ProductCatalogPage, MenuHoverOverPage, CornerMenuPage, CarDropDownPage, ProductCatalogNewTabPage, VinSearchPage, \
+    MainBannerPage
 
 
 class TestLogin:
@@ -83,6 +84,25 @@ class TestProductCatalogNewTab:
         assert len(text3) > 0
         assert len(text4) > 0
         assert len(text5) > 0
+
+
+class TestVinSearch:
+
+    def test_vin_search(self, driver):
+        vin_search = VinSearchPage(driver, 'https://marshal.ru/')
+        vin_search.open()
+        result = vin_search.check_vin_search()
+        print(result)
+
+
+
+class TestMainBanner:
+
+    def test_main_banner(self, driver):
+        main_banner = MainBannerPage(driver, "https://marshal.ru/")
+        main_banner.open()
+        text = main_banner.check_main_banner()
+        assert str(text)
 
 
 

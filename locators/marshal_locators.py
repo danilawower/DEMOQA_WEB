@@ -99,3 +99,19 @@ class ProductCatalogNewTabLocators:
     H1 = (By.XPATH, "//h1[@class='main-title']")
     #MENU_LIST = (By.XPATH, "//ul[@class='b-hbc-catalog-popup dropdown-menu show']//a[@target='_self']    /text()[not(" "normalize-space() = 'Моторные масла')][not(normalize-space() = 'Трансмиссионные ""масла/ГУР')]")
 
+
+class VinSearchLocators:
+    VIN_FIELD = (By.XPATH, "//input[@id='tecdoc_vin']")
+    VIN_SEARCH = (By.XPATH, "//button[@class='b-btn-search-vin']")
+    VIN_ELEMENTS = (By.XPATH, "//div[@class='col-6 col-sm-3 col-md-2  v2-inner-catalog-brand']")
+    CAR_NAME = (By.XPATH, "//div[@class='car-base-list-name']")
+    CAR_CLASS = (By.XPATH, "//td[@class='left']")
+
+
+
+class MainBannerLocators:
+    FIRST_BUTTON = (By.XPATH, "//div[@class='b-item slick-slide slick-current slick-active']//a[@class='b-btn-first'][contains(text(),'Записаться на ремонт')]")
+    FIRST_ROUND_BUTTON = (By.XPATH, "//button[normalize-space()='2']")
+    SECOND_ROUND_BUTTON = (By.XPATH, "//button[normalize-space()='3']")
+    SECOND_BUTTON = (By.XPATH, "//a[contains(text(),'Разместить')]")
+    H1 = (By.XPATH, "//h1[@class='main-title']")

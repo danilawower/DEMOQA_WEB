@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from generator.generator import generated_person, generated_car
 from locators.marshal_locators import PersonalAccountLocators, RegistrationLocators, ChangePersonalInformationLocators, \
     ProductCatalogLocators, MenuHoverOverPageLocators, CornerMenuLocators, CarDropDownPageLocators, \
-    ProductCatalogNewTabLocators
+    ProductCatalogNewTabLocators, VinSearchLocators, MainBannerLocators
 from pages.base_page import BasePage
 
 
@@ -159,7 +159,33 @@ class ProductCatalogNewTabPage(BasePage):
         return text1, text2, text3, text4, text5
 
 
+class VinSearchPage(BasePage):
+    locators = VinSearchLocators()
 
+    def check_vin_search(self):
+        self.element_is_visible(self.locators.VIN_FIELD).send_keys(random.randint(1000, 99999))
+        self.element_is_clickable(self.locators.VIN_SEARCH).click()
+        random.sample(self.elements_are_visible(self.locators.VIN_ELEMENTS), k=1)[0].click()
+        random.sample(self.elements_are_visible(self.locators.CAR_NAME), k=1)[0].click()
+        random.sample(self.elements_are_visible(self.locators.CAR_CLASS), k=1)[0].click()
+
+
+
+
+class MainBannerPage(BasePage):
+    locators = MainBannerLocators()
+
+    def check_main_banner(self):
+        first_button = self.element_is_clickable(self.locators.FIRST_BUTTON)
+        self.action_open_new_tab(first_button)
+        self.element_is_clickable(self.locators.SECOND_ROUND_BUTTON).click()
+        second_button = self.element_is_clickable(self.locators.SECOND_BUTTON)
+        self.action_open_new_tab(second_button)
+        self.driver.switch_to.window(self.driver.window_handles[1])
+        text = self.element_is_present(self.locators.H1).text
+        self.driver.switch_to.window(self.driver.window_handles[2])
+        text2 = self.element_is_present(self.locators.H1).text
+        return text, text2
 
 
 
