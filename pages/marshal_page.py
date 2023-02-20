@@ -160,6 +160,7 @@ class ProductCatalogNewTabPage(BasePage):
         return text1, text2, text3, text4, text5
 
 
+
 class VinSearchPage(BasePage):
     locators = VinSearchLocators()
 

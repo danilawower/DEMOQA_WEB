@@ -92,6 +92,7 @@ class TestElements:  #весь раздел элементов
 
 
 
+
     class TestUploadAndDownload:
         def test_upload_file(self, driver):
             upload_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
