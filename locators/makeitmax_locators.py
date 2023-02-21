@@ -8,5 +8,7 @@ class MainPageLocators:
     BUSINESS_LIST = (By.XPATH, "//mat-option[@class='mat-option mat-focus-indicator ng-star-inserted']")
     PASSWORD_FIELD = (By.XPATH, "//input[@type='password'][@placeholder='Пароль']")
     PASSWORD_REPEAT_FIELD = (By.XPATH, "//input[@type='password'][@placeholder='Повторите пароль']")
+    ID78 = (By.XPATH, "//mat-option[@id='mat-option-62']")
     CHECKBOX = (By.XPATH, "//span[@class='mat-checkbox-inner-container mat-checkbox-inner-container-no-side-margin']")
     ACCEPT_BUTTON = (By.XPATH, "//form[@class='register ng-dirty ng-touched ng-valid']//button[@id='registerBtn']")
+    FRAME = (By.XPATH, "//div[@role='listbox']")
