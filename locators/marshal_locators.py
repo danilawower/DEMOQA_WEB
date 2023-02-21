@@ -28,7 +28,11 @@ class PersonalAccountLocators:
     LOGIN_PASSWORD_FIELD = (By.XPATH, "//input[@id='customer_session_password']")
     LOGIN_ENTER = (By.XPATH, "//input[@class='btn-reg']")
     LOGOUT_BUTTON = (By.XPATH, "//div[@class='b-header-top-container']//a[contains(text(),'Выход')]")
-
+    START_BUTTON = (By.XPATH, "//button[@id='start']")
+    VHOD_BUTTON = (By.XPATH, "//a[@role='tab'][@aria-selected='false'][text()='Вход']")
+    EMAIL_FIELD = (By.XPATH, "//form[@class='login ng-untouched ng-pristine ng-invalid']//input[@placeholder='Ваш e-mail']")
+    PASSWORD_FIELD = (By.XPATH, "//input[@type='password'][@placeholder='Пароль']")
+    LOGIN_BUTTON1 = (By.XPATH, "//button[@id='loginBtn']")
 
 
 class ChangePersonalInformationLocators:
@@ -68,7 +72,8 @@ class MenuHoverOverPageLocators:
 
 class CornerMenuLocators:
     MAIN_BUTTON = (By.CSS_SELECTOR, "a[class='b-link-toggler']")
-    ELEMENTS = (By.XPATH, "//div[@class='b-ptsip-popup collapse b-ptsip-popup-without-dialog']//a[contains(@class, 'b-link')]")
+    ELEMENTS = (
+    By.XPATH, "//div[@class='b-ptsip-popup collapse b-ptsip-popup-without-dialog']//a[contains(@class, 'b-link')]")
     LOGIN_BUTTON = (
         By.XPATH, "//div[@class='b-header-top-container']//a[@class='b-link-user'][contains(text(),'Вход')]")
     LOGIN_EMAIL_FIELD = (By.XPATH, "//input[@id='customer_session_email']")
@@ -97,7 +102,7 @@ class ProductCatalogNewTabLocators:
     ACCUMULATOR = (By.XPATH, "//a[contains(text(),'Аккумуляторы')]")
     MENU = (By.XPATH, "//div[@class='b-mc-catalog-list']//div[@class='b-item']")
     H1 = (By.XPATH, "//h1[@class='main-title']")
-    #MENU_LIST = (By.XPATH, "//ul[@class='b-hbc-catalog-popup dropdown-menu show']//a[@target='_self']    /text()[not(" "normalize-space() = 'Моторные масла')][not(normalize-space() = 'Трансмиссионные ""масла/ГУР')]")
+    # MENU_LIST = (By.XPATH, "//ul[@class='b-hbc-catalog-popup dropdown-menu show']//a[@target='_self']    /text()[not(" "normalize-space() = 'Моторные масла')][not(normalize-space() = 'Трансмиссионные ""масла/ГУР')]")
 
 
 class VinSearchLocators:
@@ -108,9 +113,9 @@ class VinSearchLocators:
     CAR_CLASS = (By.XPATH, "//td[@class='left']")
 
 
-
 class MainBannerLocators:
-    FIRST_BUTTON = (By.XPATH, "//div[@class='b-item slick-slide slick-current slick-active']//a[@class='b-btn-first'][contains(text(),'Записаться на ремонт')]")
+    FIRST_BUTTON = (By.XPATH,
+                    "//div[@class='b-item slick-slide slick-current slick-active']//a[@class='b-btn-first'][contains(text(),'Записаться на ремонт')]")
     FIRST_ROUND_BUTTON = (By.XPATH, "//button[normalize-space()='2']")
     SECOND_ROUND_BUTTON = (By.XPATH, "//button[normalize-space()='3']")
     SECOND_BUTTON = (By.XPATH, "//a[contains(text(),'Разместить')]")

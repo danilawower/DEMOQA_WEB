@@ -52,7 +52,7 @@ class ChangePersonalInformationPage(BasePage):
 
     def check_change_personal_info(self):
         person = next(generated_person())
-        self.login_into()
+        self.login_into_marshal()
         self.element_is_clickable(self.locators.MY_ACCOUNT_BUTTON).click()
         self.element_is_clickable(self.locators.CHANGE_INFO_BUTTON).click()
         new_surname = self.element_is_clickable(self.locators.SURNAME_FIELD)
@@ -78,9 +78,9 @@ class ProductCatalogPage(BasePage):
             if count > 0:
                 self.go_to_element(item)
                 item.click()
-                count -= 1
-            else:
-                break
+                #count -= 1
+            #else:
+            break
         self.element_is_clickable(self.locators.BUTTON_SHOW).click()
 
 
@@ -103,7 +103,7 @@ class CornerMenuPage(BasePage):
     locators = CornerMenuLocators()
 
     def check_corner_menu(self):
-        self.login_into()
+        self.login_into_marshal()
         self.element_is_clickable(self.locators.MAIN_BUTTON).click()
         menu = random.sample(self.elements_are_visible(self.locators.ELEMENTS), k=1)[0].click()
 

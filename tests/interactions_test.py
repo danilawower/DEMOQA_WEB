@@ -26,6 +26,7 @@ class TestInteractions:
             assert len(grid) > 0
 
 
+
     class TestResizable:
 
         def test_resizable(self, driver):

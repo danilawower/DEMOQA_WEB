@@ -18,6 +18,7 @@ class SelectablePageLocators:
     GRID_ITEM_ACTIVE = (By.CSS_SELECTOR, 'li[class="list-group-item active list-group-item-action"]')
 
 
+
 class ResizablePageLocators:
     RESIZABLE = (By.XPATH, "//div[@class='text'][normalize-space()='Resizable']")
     RESIZABLE_BOX_HANDLE = (By.XPATH, "//div[@id='resizableBoxWithRestriction']//span[@class='react-resizable-handle "

@@ -5,6 +5,7 @@ import requests
 from selenium.common import TimeoutException
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 
 from generator.generator import generated_person, generated_file
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
@@ -203,6 +204,7 @@ class UploadAndDownloadPage(BasePage):
 
     def download_file(self):
         link = self.element_is_clickable(self.locators.DOWNLOAD_FILE).click()
+
 
 
 

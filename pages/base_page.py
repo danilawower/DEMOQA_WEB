@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
@@ -38,6 +40,7 @@ class BasePage:
     def go_to_element(self, element): #скроллим до элемента
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
+
     def action_double_click(self, element):
         action = ActionChains(self.driver) #вызываем функцию actionchains
         action.double_click(element) #дабл кликаем этой функцией на элемент
@@ -62,12 +65,19 @@ class BasePage:
 
 
 
-    def login_into(self):
+    def login_into_marshal(self):
         self.element_is_clickable(self.locators.LOGIN_BUTTON).click()
         self.element_is_visible(self.locators.LOGIN_EMAIL_FIELD).send_keys('danilawower2@gmail.com')
         self.element_is_visible(self.locators.LOGIN_PASSWORD_FIELD).send_keys('132546Da')
         self.element_is_clickable(self.locators.LOGIN_ENTER).click()
 
+
+    def login_into_makeitmax(self):
+        self.element_is_clickable(self.locators.START_BUTTON).click()
+        self.element_is_clickable(self.locators.VHOD_BUTTON).click()
+        self.element_is_clickable(self.locators.EMAIL_FIELD).send_keys('danilawower6@gmail.com')
+        self.element_is_present(self.locators.PASSWORD_FIELD).send_keys('132546Dar')
+        self.element_is_clickable(self.locators.LOGIN_BUTTON1).click()
 
 
     def action_move_to_element(self, element): #навести элемент
