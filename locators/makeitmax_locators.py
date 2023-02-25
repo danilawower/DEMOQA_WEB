@@ -33,6 +33,33 @@ class ProfilePageLocators:
     EMAIL_PROFILE_FIELD = (By.XPATH, "//input[@id='emailField']")
     SAVE_CHANGES_BUTTON = (By.XPATH, "//button[@class='chat-btn save_btn ng-star-inserted']")
 
+    #login
+    START_BUTTON = (By.XPATH, "//button[@id='start']")
+    VHOD_BUTTON = (By.XPATH, "//a[@role='tab'][@aria-selected='false'][text()='Вход']")
+    EMAIL_FIELD = (By.XPATH, "//form[@class='login ng-untouched ng-pristine ng-invalid']//input[@placeholder='Ваш e-mail']")
+    PASSWORD_FIELD = (By.XPATH, "//input[@type='password'][@placeholder='Пароль']")
+    LOGIN_BUTTON1 = (By.XPATH, "//button[@id='loginBtn']")
+
+
+class FirsStepScenarioLocators:
+    ZAPUSK_KOMPANII_BUTTON = (By.XPATH, '//p[@class="title"][text()="Запуск первой рекламной кампании"]')
+    NEXT_BUTTON = (By.XPATH, "//button[@type='button']")
+    NAME_PLACEHOLDER = (By.XPATH, "//input[@placeholder='Поле для ввода имени пользователя']")
+    MOBILE_PHONE_BUTTON = (By.XPATH, "//button[@type='button']")
+    MOBILE_PHONE_FIELD = (By.XPATH, "//input[@type='text']")
+    BRAND_NAME_FIELD = (By.XPATH, "//input[@type='text']")
+    COMPANY_NAME_FIELD = (By.XPATH, "//input[@type='text']")
+    BUSINESS_TYPE = (By.XPATH, "//mat-checkbox")
+    BUSINESS_RADIOBUTTON = (By.XPATH, "//mat-radio-button")
+    BUSINESS_CHECKBOX = (By.XPATH, "//mat-checkbox")
+    BUSINESS_CHECKBOX2 = (By.XPATH, "//span[@class='mat-checkbox-inner-container']")
+    NEXT_BUTTON_WEBSITE = (By.XPATH, "//max-button-message//button")
+    WEBSITE_FIELD = (By.XPATH, "//input[@placeholder='Ссылка на веб-сайт']")
+    VK_FB_INS = (By.XPATH, "//span[@class='mat-checkbox-inner-container']")
+    VK_FIELD = (By.XPATH, "//input[@placeholder='Ваш ВКонтакте']")
+    STEP_COUNTER = (By.XPATH, "//p[@class='step-status step-status--current']")
+
+    # login
     START_BUTTON = (By.XPATH, "//button[@id='start']")
     VHOD_BUTTON = (By.XPATH, "//a[@role='tab'][@aria-selected='false'][text()='Вход']")
     EMAIL_FIELD = (By.XPATH, "//form[@class='login ng-untouched ng-pristine ng-invalid']//input[@placeholder='Ваш e-mail']")

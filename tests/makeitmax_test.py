@@ -1,4 +1,8 @@
-from pages.makeitmax_page import MainPage, MainPageLogin, ProfilePage
+import time
+
+from pages.makeitmax_page import MainPage, MainPageLogin, ProfilePage, FirsStepScenario
+
+
 
 
 class TestMakeItMax:
@@ -24,3 +28,19 @@ class TestMakeItMax:
             profile_page = ProfilePage(driver, 'https://makeitmax.ru/')
             profile_page.open()
             profile_page.check_change_profile()
+
+
+    class TestFirstStepScenario:
+
+        def test_first_scenario(self, driver):
+            first_scenario = FirsStepScenario(driver, "https://makeitmax.ru/")
+            first_scenario.open()
+            first_scenario.check_first_scenario2()
+
+
+
+
+
+
+
+
