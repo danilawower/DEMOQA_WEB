@@ -84,7 +84,6 @@ class ProductCatalogPage(BasePage):
         self.element_is_clickable(self.locators.BUTTON_SHOW).click()
 
 
-
 class MenuHoverOverPage(BasePage):
     locators = MenuHoverOverPageLocators()
 
