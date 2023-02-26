@@ -1,6 +1,7 @@
 import time
 
 from selenium.webdriver import ActionChains
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
@@ -75,8 +76,8 @@ class BasePage:
     def login_into_makeitmax(self):
         self.element_is_clickable(self.locators.START_BUTTON).click()
         self.element_is_clickable(self.locators.VHOD_BUTTON).click()
-        self.element_is_clickable(self.locators.EMAIL_FIELD).send_keys('danilawower6@gmail.com')
-        self.element_is_present(self.locators.PASSWORD_FIELD).send_keys('132546Dar')
+        self.element_is_clickable(self.locators.EMAIL_FIELD).send_keys('fine.direkt@yandex.ru')
+        self.element_is_present(self.locators.PASSWORD_FIELD).send_keys('132546Da')
         self.element_is_clickable(self.locators.LOGIN_BUTTON1).click()
 
 
@@ -90,5 +91,6 @@ class BasePage:
         action = ActionChains(self.driver)
         action.context_click(element) #context-click = (right click) on an element.
         action.perform()
+
 
 

@@ -1,9 +1,11 @@
 import random
 import time
 
-from generator.generator import generated_person, generated_site_type
+from selenium.webdriver import Keys
+
+from generator.generator import generated_person, generated_site_type, generated_city
 from locators.makeitmax_locators import MainPageLocators, LoginLogoutLocators, ProfilePageLocators, \
-    FirsStepScenarioLocators
+    FirsStepScenarioLocators, SecondStepScenarioLocators, ThirdStepScenarioLocators
 from locators.marshal_locators import PersonalAccountLocators
 from pages.base_page import BasePage
 
@@ -58,7 +60,6 @@ class ProfilePage(BasePage):
         time.sleep(5)
 
 
-
 class FirsStepScenario(BasePage):
     locators = FirsStepScenarioLocators
 
@@ -94,12 +95,62 @@ class FirsStepScenario(BasePage):
         self.element_is_clickable(self.locators.NEXT_BUTTON).click()
         self.element_is_visible(self.locators.VK_FIELD).send_keys(site)
         self.element_is_clickable(self.locators.NEXT_BUTTON).click()
+        text = self.element_is_present(self.locators.STEP_COUNTER).get_attribute("innerHTML").splitlines()[
+            0]
+        return text
 
 
-    def check_first_scenario2(self): #ПРОВЕРИТЬ СТРАНИЦУ ПЕРЕШЛ ЛИ НА ШАГ
-        person = next(generated_person())
+class SecondStepScenario(BasePage):
+    locators = SecondStepScenarioLocators()
+
+    def check_second_scenario(self):
         self.login_into_makeitmax()
         self.element_is_clickable(self.locators.ZAPUSK_KOMPANII_BUTTON).click()
-        step = self.element_is_visible(self.locators.STEP_COUNTER)
+        random.sample(self.elements_are_visible(self.locators.RADIOBUTTON_GOAL), k=1)[0].click()
+        self.element_is_clickable(self.locators.NEXT_BUTTON).click()
+        random.sample(self.elements_are_visible(self.locators.RADIOBUTTON_GOAL), k=1)[0].click()
+        self.element_is_clickable(self.locators.NEXT_BUTTON).click()
+        self.element_is_clickable(self.locators.NEXT_BUTTON).click()
+        address_field = self.element_is_visible(self.locators.ADRESS_FIELD)
+        city = random.sample(next(generated_city()).city_name, k=1)
+        address_field.send_keys(city)
+        time.sleep(2)
+        address_field.send_keys(Keys.ARROW_DOWN)
+        address_field.send_keys(Keys.ENTER)
+        self.element_is_clickable(self.locators.NEXT_BUTTON).click()
+        self.element_is_clickable(self.locators.NO_BUTTON).click()
+        slider = self.elements_are_present(self.locators.SLIDER)
+        for item in slider:
+            self.action_drag_and_drop_by_offset(item, random.randint(1, 9), 0)
+        next_button = self.element_is_visible(self.locators.NEXT_BUTTON)
+        self.go_to_element(next_button)
+        next_button.click()
+        time.sleep(3)
+        self.element_is_clickable(self.locators.NEXT_BUTTON).click()
+        time.sleep(3)
+        self.element_is_clickable(self.locators.NEXT_BUTTON).click()
+        time.sleep(3)
+        random.sample(self.elements_are_present(self.locators.RADIOBUTTON_GOAL), k=1)[0].click()
+        self.element_is_clickable(self.locators.NEXT_BUTTON).click()
+        time.sleep(2)
+        self.element_is_clickable(self.locators.CITY_FIELD).click()
+        time.sleep(2)
+        submenu = self.elements_are_present(self.locators.REGION_SUBMENU)
+        count = 50
+        while count != 0:
+            item = submenu[random.randint(1, 1)]
+            if count > 0:
+                self.go_to_element(item)
+                item.click()
+            break
+        self.element_is_clickable(self.locators.NEXT_BUTTON).click()
+        time.sleep(2)
+        text = self.element_is_visible(self.locators.STEP_COUNTER).get_attribute('innerHTML').splitlines()[0]
+        return text
 
 
+class ThirdStepScenario(BasePage):
+    locators = ThirdStepScenarioLocators()
+
+
+        def check_third_scenario(self):

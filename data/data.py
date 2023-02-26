@@ -6,7 +6,7 @@ class Person:
     full_name: str = None  # строковые данные
     firstname: str = None
     lastname: str = None
-    age: int = None  #числовые
+    age: int = None  # числовые
     salary: int = None
     department: str = None
     email: str = None
@@ -15,6 +15,7 @@ class Person:
     permanent_address: str = None
     mobile: str = None
     country: str = None
+    city: str = None
 
 
 @dataclasses.dataclass
@@ -33,3 +34,13 @@ class Date:
 @dataclasses.dataclass
 class Car:
     car_name: list = None
+
+
+@dataclasses.dataclass
+class Website:
+    site_type: list = None
+
+
+@dataclasses.dataclass
+class City:
+    city_name: list = None

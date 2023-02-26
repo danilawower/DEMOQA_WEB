@@ -1,3 +1,4 @@
+import random
 
 from selenium import webdriver
 
@@ -16,4 +17,8 @@ download = driver.find_element(By.XPATH, "//div[@class='items']//div[1]//div[1]/
 download.click()
 time.sleep(5)
 driver.close()
+
+
+
+
 

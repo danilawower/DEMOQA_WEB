@@ -1,6 +1,6 @@
 import random
 
-from data.data import Person, Color, Date, Car
+from data.data import Person, Color, Date, Car, Website, City
 from faker import Faker  # библиотека для данных
 
 faker_ru = Faker('ru_RU')
@@ -21,7 +21,8 @@ def generated_person():  # вызываем класс Пёрсон из дат�
         permanent_address=faker_ru.address(),
         mobile=faker_ru.msisdn(),
         index=random.randint(10, 20),
-        country=faker_ru.country()
+        country=faker_ru.country(),
+        city=faker_ru.city()
         # (Mobile Subscriber Integrated Services Digital Number) — номер мобильного абонента цифровой сети с интеграцией служб для связи в стандартах GSM, UMTS
     )
 
@@ -54,3 +55,17 @@ def generated_car():
     yield Car(
         car_name=['ACURA', 'ALFA ROMEO', 'DODGE', 'FIAT', 'HONDA', 'ZAZ', 'CHERY', 'DAF']
     )
+
+
+def generated_site_type():
+    yield Website(
+        site_type=['https://website.ru', 'https://vk.com/group']
+    )
+
+
+def generated_city():
+    yield City(
+        city_name=['Москва', 'Санкт-Петербург', 'Воронеж', 'Нижний Новгород']
+    )
+
+

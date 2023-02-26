@@ -1,8 +1,7 @@
 import time
 
-from pages.makeitmax_page import MainPage, MainPageLogin, ProfilePage, FirsStepScenario
-
-
+from pages.makeitmax_page import MainPage, MainPageLogin, ProfilePage, FirsStepScenario, SecondStepScenario, \
+    ThirdStepScenario
 
 
 class TestMakeItMax:
@@ -35,9 +34,25 @@ class TestMakeItMax:
         def test_first_scenario(self, driver):
             first_scenario = FirsStepScenario(driver, "https://makeitmax.ru/")
             first_scenario.open()
-            first_scenario.check_first_scenario2()
+            step_result = first_scenario.check_first_scenario()
+            assert 'Шаг 2 из 7' in step_result
 
 
+    class TestSecondStepScenario:
+
+        def test_second_scenario(self, driver):
+            second_scenario = SecondStepScenario(driver, "https://makeitmax.ru/")
+            second_scenario.open()
+            step_result = second_scenario.check_second_scenario()
+            assert 'Шаг 4 из 7' in step_result
+
+
+    class TestThirdStepScenario:
+
+        def test_third_step_scenario(self, driver):
+            third_scenario = ThirdStepScenario(driver, "https://makeitmax.ru/")
+            third_scenario.open()
+            third_scenario.check_third_scenario()
 
 
 

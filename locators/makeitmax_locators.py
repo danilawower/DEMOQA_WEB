@@ -57,7 +57,36 @@ class FirsStepScenarioLocators:
     WEBSITE_FIELD = (By.XPATH, "//input[@placeholder='Ссылка на веб-сайт']")
     VK_FB_INS = (By.XPATH, "//span[@class='mat-checkbox-inner-container']")
     VK_FIELD = (By.XPATH, "//input[@placeholder='Ваш ВКонтакте']")
-    STEP_COUNTER = (By.XPATH, "//p[@class='step-status step-status--current']")
+    STEP_COUNTER = (By.CSS_SELECTOR, "div[class='progress-bar-container--status']")
+
+    # login
+    START_BUTTON = (By.XPATH, "//button[@id='start']")
+    VHOD_BUTTON = (By.XPATH, "//a[@role='tab'][@aria-selected='false'][text()='Вход']")
+    EMAIL_FIELD = (By.XPATH, "//form[@class='login ng-untouched ng-pristine ng-invalid']//input[@placeholder='Ваш e-mail']")
+    PASSWORD_FIELD = (By.XPATH, "//input[@type='password'][@placeholder='Пароль']")
+    LOGIN_BUTTON1 = (By.XPATH, "//button[@id='loginBtn']")
+
+
+class SecondStepScenarioLocators:
+    RADIOBUTTON_GOAL = (By.XPATH, "//mat-radio-button")
+    ZAPUSK_KOMPANII_BUTTON = (By.XPATH, '//p[@class="title"][text()="Запуск первой рекламной кампании"]')
+    NEXT_BUTTON = (By.XPATH, "//button[@type='button']")
+    NO_BUTTON = (By.XPATH, "//button[contains(text(),'Нет')]")
+    SLIDER = (By.XPATH, "//mat-slider")
+    CITY_FIELD = (By.XPATH, "//input[@placeholder='Введите город']")
+    REGION_SUBMENU = (By.XPATH, "//span[@class='mat-option-text']")
+    STEP_COUNTER = (By.CSS_SELECTOR, "div[class='progress-bar-container--status']")
+
+    # login
+    START_BUTTON = (By.XPATH, "//button[@id='start']")
+    VHOD_BUTTON = (By.XPATH, "//a[@role='tab'][@aria-selected='false'][text()='Вход']")
+    EMAIL_FIELD = (By.XPATH, "//form[@class='login ng-untouched ng-pristine ng-invalid']//input[@placeholder='Ваш e-mail']")
+    PASSWORD_FIELD = (By.XPATH, "//input[@type='password'][@placeholder='Пароль']")
+    LOGIN_BUTTON1 = (By.XPATH, "//button[@id='loginBtn']")
+
+
+class ThirdStepScenarioLocators:
+
 
     # login
     START_BUTTON = (By.XPATH, "//button[@id='start']")
