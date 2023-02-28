@@ -194,12 +194,17 @@ class LinksPage(BasePage):
 class UploadAndDownloadPage(BasePage):
     locators = UploadAndDownloadPageLocators()
 
-    def upload_file(self):
+    def upload_file2(self):
         file_name, path = generated_file()
         self.element_is_present(self.locators.UPLOAD_FILE).send_keys(
             path)  # отправляем кейсами сам путь файла, из generator.py
         os.remove(path)  # удаление операц. системой файла
         text = self.element_is_present(self.locators.UPLOADED_FILE).text
+
+    def upload_file(self):
+        path = "C:\\Users\\daniil\\Desktop\\python\\Screenshot_1.jpg"
+        self.element_is_clickable(self.locators.UPLOAD_FILE).send_keys(path)
+        time.sleep(3)
 
 
     def download_file(self):
