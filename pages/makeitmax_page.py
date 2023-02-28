@@ -153,4 +153,18 @@ class ThirdStepScenario(BasePage):
     locators = ThirdStepScenarioLocators()
 
 
-        def check_third_scenario(self):
+    def check_third_scenario(self):
+        self.login_into_makeitmax()
+        self.element_is_clickable(self.locators.ZAPUSK_KOMPANII_BUTTON).click()
+        time.sleep(2)
+        random.sample(self.elements_are_present(self.locators.NEXT_BUTTON), k=1)[0].click()
+        time.sleep(2)
+        self.element_is_visible(self.locators.USERS_COUNT).send_keys(random.randint(500, 1500))
+        self.element_is_clickable(self.locators.NEXT_BUTTON).click()
+        time.sleep(2)
+        self.element_is_clickable(self.locators.NEXT_BUTTON).click()
+        time.sleep(3)
+        path = "C:\\Users\\daniil\\Desktop\\python\\Screenshot_1.jpg"
+        upload = self.element_is_clickable(self.locators.UPLOAD_FILE)
+        upload.send_keys(path)
+        time.sleep(3)

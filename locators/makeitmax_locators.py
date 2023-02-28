@@ -82,10 +82,15 @@ class SecondStepScenarioLocators:
     VHOD_BUTTON = (By.XPATH, "//a[@role='tab'][@aria-selected='false'][text()='Вход']")
     EMAIL_FIELD = (By.XPATH, "//form[@class='login ng-untouched ng-pristine ng-invalid']//input[@placeholder='Ваш e-mail']")
     PASSWORD_FIELD = (By.XPATH, "//input[@type='password'][@placeholder='Пароль']")
-    LOGIN_BUTTON1 = (By.XPATH, "//button[@id='loginBtn']")
+    LOGIN_BUTTON1 = (By.XPATH, "//max-file-uploader")
 
 
 class ThirdStepScenarioLocators:
+    ZAPUSK_KOMPANII_BUTTON = (By.XPATH, '//p[@class="title"][text()="Запуск первой рекламной кампании"]')
+    NEXT_BUTTON = (By.XPATH, "//button[@type='button']")
+    USERS_COUNT = (By.XPATH, "//input[@placeholder='Количество посетителей']")
+    UPLOAD_FILE = (By.XPATH, "//label[@for='1677597784849']")
+
 
 
     # login
