@@ -4,7 +4,8 @@ import time
 import when as when
 
 from generator.generator import generated_person
-from locators.elements_page_locators2 import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators
+from locators.elements_page_locators2 import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
+    WebTablePageLocators, ButtonPageLocators
 from pages.base_page import BasePage
 
 
@@ -49,6 +50,7 @@ class CheckBoxPage(BasePage):
                 break
 
 
+
 class RadioButtonPage(BasePage):
 
     locators = RadioButtonPageLocators()
@@ -56,6 +58,56 @@ class RadioButtonPage(BasePage):
     def check_radiobutton(self, list_num):
         item_list = {'yes': self.locators.YES_BUTTON, 'impressive': self.locators.IMPRESSIVE_BUTTON}
         self.element_is_clickable(item_list[list_num]).click()
+
+
+
+
+class WebTablePage(BasePage):
+
+    locators = WebTablePageLocators()
+
+    def add_new_person(self):
+        person = next(generated_person())
+        self.element_is_clickable(self.locators.ADD_BUTTON).click()
+        self.element_is_present(self.locators.FIRST_NAME).send_keys(person.firstname)
+        text = self.element_is_present(self.locators.FIRST_NAME).get_attribute('value')
+        self.element_is_present(self.locators.LAST_NAME).send_keys(person.lastname)
+        self.element_is_present(self.locators.EMAIL).send_keys(person.email)
+        self.element_is_present(self.locators.AGE).send_keys(person.age)
+        self.element_is_present(self.locators.SALARY).send_keys(person.salary)
+        self.element_is_present(self.locators.DEPARTMENT).send_keys(person.department)
+        self.element_is_clickable(self.locators.SUBMIT_BUTTON).click()
+        return text
+
+    def check_new_person(self):
+        add_new = self.add_new_person()
+        name = str(add_new)
+        search = self.element_is_visible(self.locators.INPUT_SEARCH)
+        search.send_keys(name)
+        search_result = self.element_is_present(self.locators.TABLE_NAME).text
+        return add_new, search_result
+
+
+
+class ButtonsPage(BasePage):
+    locators = ButtonPageLocators()
+
+    def check_buttons(self, type_click):
+        if type_click == 'double':
+            double = self.element_is_clickable(self.locators.DOUBLE_CLICK)
+            self.action_double_click(double)
+        if type_click == 'right':
+            right = self.element_is_clickable(self.locators.RIGHT_CLICK)
+            self.action_right_click(right)
+        if type_click == 'click':
+            self.element_is_clickable(self.locators.CLICK_ME).click()
+
+
+
+
+
+
+
 
 
 
