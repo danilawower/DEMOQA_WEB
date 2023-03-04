@@ -36,3 +36,20 @@ class ButtonPageLocators:
     DOUBLE_CLICK = (By.XPATH, "//button[@id='doubleClickBtn']")
     RIGHT_CLICK = (By.XPATH, "//button[@id='rightClickBtn']")
     CLICK_ME = (By.XPATH, "//button[@type='button'][text()='Click Me']")
+
+
+class LinksPageLocators:
+    HOME_LINK = (By.XPATH, "//a[@id='simpleLink']")
+    DYNAMIC_LINK = (By.XPATH, "//a[@id='dynamicLink']")
+    FORBIDDEN_LINK = (By.XPATH, "//a[@id='forbidden']")
+
+
+class UploadDownloadPageLocators:
+    DOWNLOAD_BUTTON = (By.XPATH, "//a[@id='downloadButton']")
+    UPLOAD_BUTTON = (By.XPATH, "//input[@id='uploadFile']")
+
+
+class DynamicPropertiesPageLocators:
+    ENABLE_AFTER_BUTTON = (By.XPATH, "//button[@id='enableAfter']")
+    COLOR_CHANGE_BUTTON = (By.XPATH, "//button[@id='colorChange']")
+    VISIBLE_AFTER_BUTTON = (By.XPATH, "//button[@id='visibleAfter']")

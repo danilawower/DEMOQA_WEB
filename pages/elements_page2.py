@@ -1,11 +1,13 @@
 import random
 import time
+import requests
 
 import when as when
 
 from generator.generator import generated_person
 from locators.elements_page_locators2 import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
-    WebTablePageLocators, ButtonPageLocators
+    WebTablePageLocators, ButtonPageLocators, LinksPageLocators, UploadDownloadPageLocators, \
+    DynamicPropertiesPageLocators
 from pages.base_page import BasePage
 
 
@@ -51,7 +53,7 @@ class CheckBoxPage(BasePage):
 
 
 
-class RadioButtonPage(BasePage):
+class RadioButtonPage(BasePage):  #self.element_is_clickable(item_list[list_num]).click()
 
     locators = RadioButtonPageLocators()
 
@@ -89,7 +91,7 @@ class WebTablePage(BasePage):
 
 
 
-class ButtonsPage(BasePage):
+class ButtonsPage(BasePage):   # , (self, type_click):, if type_click == 'double':
     locators = ButtonPageLocators()
 
     def check_buttons(self, type_click):
@@ -104,9 +106,58 @@ class ButtonsPage(BasePage):
 
 
 
+class LinksPage(BasePage):   #self.driver.switch_to.window(self.driver.window_handles[1])  # name = requests.get(url), return request.status_code
+    locators = LinksPageLocators()
+
+    def click_home_link(self):
+        self.element_is_clickable(self.locators.HOME_LINK).click()
+        self.driver.switch_to.window(self.driver.window_handles[1])
+        url = self.driver.current_url
+        return url
+
+    def click_dynamic_link(self):
+        self.element_is_clickable(self.locators.DYNAMIC_LINK).click()
+        self.driver.switch_to.window(self.driver.window_handles[1])
+        url = self.driver.current_url
+        return url
+
+    def click_forbidden_link(self):
+        url = 'https://demoqa.com/forbidden'
+        request = requests.get(url)
+        return request.status_code
 
 
 
+
+class UploadDownloadPage(BasePage):
+    locators = UploadDownloadPageLocators()
+
+    def check_download(self):
+        self.element_is_clickable(self.locators.DOWNLOAD_BUTTON).click()
+        #options = self.driver.ChromeOptions()
+        #prefs = {"download.default_directory": "C:\\Users\daniil\\PycharmProjects\\automation_qa_course\\downloads"}
+        #options.add_experimental_option("prefs", prefs)
+
+
+    def check_upload(self):
+        button = self.element_is_clickable(self.locators.UPLOAD_BUTTON)
+        path = 'C:\\Users\\daniil\\Desktop\\python\\Screenshot_1.jpg'
+        button.send_keys(path)
+
+
+class DynamicPropertiesPage(BasePage):  #button.value_of_css_property('color')
+    locators = DynamicPropertiesPageLocators()
+
+    def check_enable_after_button(self):
+        time.sleep(5)
+        self.element_is_clickable(self.locators.ENABLE_AFTER_BUTTON).click()
+
+    def check_color_change(self):
+        button = self.element_is_present(self.locators.COLOR_CHANGE_BUTTON)
+        color_before = button.value_of_css_property('color')
+        time.sleep(5)
+        color_after = button.value_of_css_property('color')
+        return color_before, color_after
 
 
 

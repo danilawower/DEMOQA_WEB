@@ -1,6 +1,7 @@
 import time
 
-from pages.elements_page2 import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage
+from pages.elements_page2 import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage, \
+    UploadDownloadPage, DynamicPropertiesPage
 
 
 class TestElements:
@@ -50,3 +51,45 @@ class TestElements:
             buttons_page.check_buttons('right')
             buttons_page.check_buttons('double')
             buttons_page.check_buttons('click')
+
+
+
+    class TestLinks:
+
+        def test_links(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            home_link = links_page.click_home_link()
+            dynamic_link = links_page.click_dynamic_link()
+            forbidden_link = links_page.click_forbidden_link()
+            assert home_link == 'https://demoqa.com/'
+            assert dynamic_link == 'https://demoqa.com/'
+            assert forbidden_link == 403
+
+
+
+    class TestUploadDownload:
+
+        def test_download(self, driver):
+            download_page = UploadDownloadPage(driver, "https://demoqa.com/upload-download")
+            download_page.open()
+            download_page.check_download()
+
+        def test_upload(self, driver):
+            download_page = UploadDownloadPage(driver, "https://demoqa.com/upload-download")
+            download_page.open()
+            download_page.check_upload()
+
+
+    class TestDynamicPage:
+
+        def test_visible_after(self, driver):
+            dynamic_page = DynamicPropertiesPage(driver, "https://demoqa.com/dynamic-properties")
+            dynamic_page.open()
+            dynamic_page.check_enable_after_button()
+
+        def test_color_change(self, driver):
+            dynamic_page = DynamicPropertiesPage(driver, "https://demoqa.com/dynamic-properties")
+            dynamic_page.open()
+            before, after = dynamic_page.check_color_change()
+            assert before != after
