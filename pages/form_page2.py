@@ -26,6 +26,17 @@ class FormPage(BasePage):
         subject_input = self.element_is_clickable(self.locators.SUBJECTS)
         subject_input.send_keys(subject)
         subject_input.send_keys(Keys.ENTER)
+        hobbies = self.elements_are_present(self.locators.CHECKBOX)
+        random.sample(hobbies, k=1)[0].click()
+        upload_button = self.element_is_clickable(self.locators.UPLOAD_BUTTON)
+        path = 'C:\\Users\\daniil\\Desktop\\python\\Screenshot_1.jpg'
+        upload_button.send_keys(path)
+        self.element_is_present(self.locators.CURRENT_ADDRESS).send_keys(person.current_address)
+        self.element_is_clickable(self.locators.STATE).click()
+        self.element_is_clickable(self.locators.STATE_INPUT).send_keys(Keys.ENTER)
+        self.element_is_clickable(self.locators.CITY).click()
+        self.element_is_clickable(self.locators.CITY_INPUT).send_keys(Keys.ENTER)
+        self.element_is_clickable(self.locators.SUBMIT).click()
 
 
 

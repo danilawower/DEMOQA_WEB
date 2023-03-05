@@ -78,9 +78,9 @@ class ProductCatalogPage(BasePage):
             if count > 0:
                 self.go_to_element(item)
                 item.click()
-                #count -= 1
-            #else:
-            break
+                count -= 1
+            else:
+                break
         self.element_is_clickable(self.locators.BUTTON_SHOW).click()
 
 
