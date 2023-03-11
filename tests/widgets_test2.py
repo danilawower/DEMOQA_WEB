@@ -1,6 +1,7 @@
 import time
 
-from pages.widgets_page2 import AccordianPage, AutocompletePage, SliderPage, ProgressbarPage, TabsPage, ToolTipsPage
+from pages.widgets_page2 import AccordianPage, AutocompletePage, SliderPage, ProgressbarPage, TabsPage, ToolTipsPage, \
+    MenuPage
 
 
 class TestWidgets:
@@ -58,3 +59,9 @@ class TestWidgets:
             assert text == 'You hovered over the Button'
 
 
+
+    class TestMenu:
+        def test_menu(self, driver):
+            menu_page = MenuPage(driver, "https://demoqa.com/menu#")
+            menu_page.open()
+            menu_page.check_menu()
