@@ -1,6 +1,6 @@
 import time
 
-from pages.interactions_page2 import SortablePage, SelectablePage
+from pages.interactions_page2 import SortablePage, SelectablePage, ResizablePage
 
 
 class TestInteractions:
@@ -22,3 +22,11 @@ class TestInteractions:
             grid_elements = selectable_page.check_selectable_grid()
             assert len(list_elements) > 0
             assert len(grid_elements) > 0
+
+
+    class TestResizable:
+        def test_resizable(self, driver):
+            resizable_page = ResizablePage(driver, 'https://demoqa.com/resizable')
+            resizable_page.open()
+            before, after = resizable_page.change_parameters()
+            assert before != after

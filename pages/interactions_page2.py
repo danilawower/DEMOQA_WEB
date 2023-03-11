@@ -1,6 +1,6 @@
 import random
 
-from locators.interaction_page_locators2 import SortablePageLocators, SelectablePageLocators
+from locators.interaction_page_locators2 import SortablePageLocators, SelectablePageLocators, ResizablePageLocators
 from pages.base_page import BasePage
 
 
@@ -52,4 +52,22 @@ class SelectablePage(BasePage):
             item.click()
         list_elements_active = self.element_is_visible(self.locators.GRID_ELEMENTS_ACTIVE)
         return list_elements_active.text
+
+
+class ResizablePage(BasePage):
+    locators = ResizablePageLocators()
+
+    def check_parameters(self):
+        box = self.element_is_present(self.locators.RESIZABLE_BOX)
+        values = box.get_attribute('style')
+        return values
+
+    def change_parameters(self):
+        before = self.check_parameters()
+        handle = self.element_is_present(self.locators.RESIZABLE_BOX_HANDLE)
+        self.action_drag_and_drop_by_offset(handle, random.randint(1, 200), random.randint(1, 200))
+        after = self.check_parameters()
+        return before, after
+
+
 
