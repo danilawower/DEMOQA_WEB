@@ -20,6 +20,7 @@ class FormPageLocators:
     CITY_INPUT = (By.CSS_SELECTOR, "input[id='react-select-4-input']")
     SUBMIT = (By.XPATH, "//button[@id='submit']")
 
+
     #table results
 
     RESULT_TABLE = (By.XPATH, "//div[@class='table-responsive']//td[2]") #у нужных полей индексы td2. он возьмёт каждый
