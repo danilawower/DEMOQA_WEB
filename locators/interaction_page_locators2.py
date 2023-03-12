@@ -20,3 +20,15 @@ class SelectablePageLocators:
 class ResizablePageLocators:
     RESIZABLE_BOX = (By.XPATH, "//div[@id='resizableBoxWithRestriction']")
     RESIZABLE_BOX_HANDLE = (By.XPATH, "//div[@id='resizableBoxWithRestriction']//span[@class='react-resizable-handle react-resizable-handle-se']")
+
+
+class DroppableLocators:
+    DRAG_ME = (By.XPATH, "//div[@id='draggable']")
+    DROP_HERE = (By.XPATH, "//div[@id='simpleDropContainer']//div[@id='droppable']")
+
+    ACCEPT_BUTTON = (By.XPATH, "//a[@id='droppableExample-tab-accept']")
+    ACCEPTABLE = (By.XPATH, "//div[@id='acceptable']")
+    NOT_ACCEPTABLE = (By.XPATH, "//div[@id='notAcceptable']")
+    DROP_HERE_ACCEPT = (By.XPATH, "//div[@id='acceptDropContainer']//div[@id='droppable']")
+
+

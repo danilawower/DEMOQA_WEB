@@ -1,6 +1,6 @@
 import time
 
-from pages.interactions_page2 import SortablePage, SelectablePage, ResizablePage
+from pages.interactions_page2 import SortablePage, SelectablePage, ResizablePage, DroppablePage
 
 
 class TestInteractions:
@@ -30,3 +30,19 @@ class TestInteractions:
             resizable_page.open()
             before, after = resizable_page.change_parameters()
             assert before != after
+
+
+    class TestDroppable:
+        def test_droppable_simple(self, driver):
+            droppable_page = DroppablePage(driver, 'https://demoqa.com/droppable')
+            droppable_page.open()
+            result = droppable_page.check_droppable_simple()
+            assert result == 'Dropped!'
+
+        def test_droppable_accept(self, driver):
+            droppable_page = DroppablePage(driver, 'https://demoqa.com/droppable')
+            droppable_page.open()
+            result_not_accept, result_accept = droppable_page.check_droppable_accept()
+            assert result_not_accept == 'Drop here'
+            assert result_accept == 'Dropped!'
+

@@ -1,6 +1,8 @@
 import random
+import time
 
-from locators.interaction_page_locators2 import SortablePageLocators, SelectablePageLocators, ResizablePageLocators
+from locators.interaction_page_locators2 import SortablePageLocators, SelectablePageLocators, ResizablePageLocators, \
+    DroppableLocators
 from pages.base_page import BasePage
 
 
@@ -68,6 +70,32 @@ class ResizablePage(BasePage):
         self.action_drag_and_drop_by_offset(handle, random.randint(1, 200), random.randint(1, 200))
         after = self.check_parameters()
         return before, after
+
+
+class DroppablePage(BasePage):
+    locators = DroppableLocators()
+
+    def check_droppable_simple(self):
+        drag_element = self.element_is_present(self.locators.DRAG_ME)
+        drop_element = self.element_is_present(self.locators.DROP_HERE)
+        self.action_drag_and_drop_to_element(drag_element, drop_element)
+        text = drop_element.text
+        return text
+
+    def check_droppable_accept(self):
+        self.element_is_clickable(self.locators.ACCEPT_BUTTON).click()
+        acceptable = self.element_is_present(self.locators.ACCEPTABLE)
+        drop_here = self.element_is_present(self.locators.DROP_HERE_ACCEPT)
+        not_acceptable = self.element_is_present(self.locators.NOT_ACCEPTABLE)
+        self.action_drag_and_drop_to_element(not_acceptable, drop_here)
+        text_not_accept = drop_here.text
+        self.action_drag_and_drop_to_element(acceptable, drop_here)
+        text_accept = drop_here.text
+        return text_not_accept, text_accept
+
+
+
+
 
 
 

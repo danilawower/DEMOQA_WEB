@@ -32,3 +32,7 @@ class ToolTipsLocators:
     HOVER_BUTTON = (By.XPATH, "//button[@id='toolTipButton']")
     BUTTON_TOOLTIP = (By.XPATH, "//button[@aria-describedby='buttonToolTip']")
     TOOL_TIP_INNERS = (By.CSS_SELECTOR, 'div[class = "tooltip-inner"]')
+
+
+class MenuPageLocators:
+    MENU = (By.XPATH, "//a[@href='#']")
