@@ -1,11 +1,14 @@
 import random
 
-from data.data import Person, Color, Date, Car, Website, City
+
+from data.data import Person, Color, Date, Car, Website, City, Subject
 from faker import Faker  # библиотека для данных
+
 
 faker_ru = Faker('ru_RU')
 fake_en = Faker('en')
 Faker.seed()
+
 
 
 def generated_person():  # вызываем класс Пёрсон из даты с определёнными полями
@@ -35,11 +38,11 @@ def generated_file():
     return file.name, path  # возвращаем имя созданного файла и путь к нему
 
 
-
 def generated_color():
     yield Color(
         color_name=['Red', 'Green', 'Yellow', 'Purple']
     )
+
 
 
 def generated_date():
@@ -69,3 +72,7 @@ def generated_city():
     )
 
 
+def generated_subject():
+    yield Subject(
+        subject_name=['Math', 'Physics', 'English', 'Chemistry']
+    )

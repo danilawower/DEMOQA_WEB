@@ -72,6 +72,7 @@ class ResizablePage(BasePage):
         return before, after
 
 
+
 class DroppablePage(BasePage):
     locators = DroppableLocators()
 
@@ -80,7 +81,10 @@ class DroppablePage(BasePage):
         drop_element = self.element_is_present(self.locators.DROP_HERE)
         self.action_drag_and_drop_to_element(drag_element, drop_element)
         text = drop_element.text
-        return text
+        #return text
+
+
+
 
     def check_droppable_accept(self):
         self.element_is_clickable(self.locators.ACCEPT_BUTTON).click()

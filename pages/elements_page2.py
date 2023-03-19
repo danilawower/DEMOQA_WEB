@@ -33,7 +33,8 @@ class CheckBoxPage(BasePage):
         for item in item_button:
             self.element_is_clickable(item)
             item.click()
-        time.sleep(2)
+
+
 
 
     def check_checkbox(self):
@@ -53,6 +54,7 @@ class CheckBoxPage(BasePage):
 
 
 
+
 class RadioButtonPage(BasePage):  #self.element_is_clickable(item_list[list_num]).click()
 
     locators = RadioButtonPageLocators()
@@ -60,6 +62,9 @@ class RadioButtonPage(BasePage):  #self.element_is_clickable(item_list[list_num]
     def check_radiobutton(self, list_num):
         item_list = {'yes': self.locators.YES_BUTTON, 'impressive': self.locators.IMPRESSIVE_BUTTON}
         self.element_is_clickable(item_list[list_num]).click()
+
+
+
 
 
 
@@ -115,6 +120,8 @@ class LinksPage(BasePage):   #self.driver.switch_to.window(self.driver.window_ha
         url = self.driver.current_url
         return url
 
+
+
     def click_dynamic_link(self):
         self.element_is_clickable(self.locators.DYNAMIC_LINK).click()
         self.driver.switch_to.window(self.driver.window_handles[1])
@@ -143,6 +150,7 @@ class UploadDownloadPage(BasePage):
         button = self.element_is_clickable(self.locators.UPLOAD_BUTTON)
         path = 'C:\\Users\\daniil\\Desktop\\python\\Screenshot_1.jpg'
         button.send_keys(path)
+
 
 
 class DynamicPropertiesPage(BasePage):  #button.value_of_css_property('color')

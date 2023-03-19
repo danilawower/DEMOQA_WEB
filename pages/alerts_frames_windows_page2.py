@@ -34,6 +34,8 @@ class AlertPage(BasePage):  # alert = self.driver.switch_to.alert     alert.acce
         alert.accept()
 
 
+
+
 class FramePage(BasePage):  # self.driver.switch_to.default_content()
     locators = FramesLocators()
 

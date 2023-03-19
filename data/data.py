@@ -1,6 +1,8 @@
 import dataclasses
 
 
+
+
 @dataclasses.dataclass
 class Person:
     full_name: str = None  # строковые данные
@@ -44,3 +46,8 @@ class Website:
 @dataclasses.dataclass
 class City:
     city_name: list = None
+
+
+@dataclasses.dataclass
+class Subject:
+    subject_name: list = None

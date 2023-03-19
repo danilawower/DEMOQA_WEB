@@ -79,6 +79,7 @@ class TabsPage(BasePage):
 
 
 
+
 class ToolTipsPage(BasePage):
     locators = ToolTipsLocators()
 

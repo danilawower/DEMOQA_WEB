@@ -12,9 +12,11 @@ from locators.marshal_locators import PersonalAccountLocators
 class BasePage:
     locators = PersonalAccountLocators
 
+
     def __init__(self, driver, url):
         self.driver = driver
         self.url = url
+
 
     def open(self):  # открыть страницу в тесте будет page.open
         self.driver.get(self.url)
@@ -43,16 +45,19 @@ class BasePage:
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
 
-
     def action_double_click(self, element):
         action = ActionChains(self.driver) #вызываем функцию actionchains
         action.double_click(element) #дабл кликаем этой функцией на элемент
         action.perform() #подтвердить действие
 
+
+
     def action_drag_and_drop_by_offset(self, element, x_coords, y_coords): #тянем в стороны, указываем координаты х и у
         action = ActionChains(self.driver)
         action.drag_and_drop_by_offset(element, x_coords, y_coords)  #зажимает кнопку мыши и двигает  в указанном направлении
         action.perform()
+
+
 
     def action_drag_and_drop_to_element(self, what, where): #тянет сортаблы и драг эн дроп элементы, вниз вверх и тд
         action = ActionChains(self.driver)
@@ -93,6 +98,7 @@ class BasePage:
         action = ActionChains(self.driver)
         action.context_click(element) #context-click = (right click) on an element.
         action.perform()
+
 
 
 
