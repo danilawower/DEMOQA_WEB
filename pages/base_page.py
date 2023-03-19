@@ -6,11 +6,10 @@ from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
-from locators.marshal_locators import PersonalAccountLocators
 
 
 class BasePage:
-    locators = PersonalAccountLocators
+
 
 
     def __init__(self, driver, url):
@@ -71,21 +70,6 @@ class BasePage:
         action.key_up(Keys.CONTROL)
         action.perform()
 
-
-
-    def login_into_marshal(self):
-        self.element_is_clickable(self.locators.LOGIN_BUTTON).click()
-        self.element_is_visible(self.locators.LOGIN_EMAIL_FIELD).send_keys('danilawower2@gmail.com')
-        self.element_is_visible(self.locators.LOGIN_PASSWORD_FIELD).send_keys('132546Da')
-        self.element_is_clickable(self.locators.LOGIN_ENTER).click()
-
-
-    def login_into_makeitmax(self):
-        self.element_is_clickable(self.locators.START_BUTTON).click()
-        self.element_is_clickable(self.locators.VHOD_BUTTON).click()
-        self.element_is_clickable(self.locators.EMAIL_FIELD).send_keys('fine.direkt@yandex.ru')
-        self.element_is_present(self.locators.PASSWORD_FIELD).send_keys('132546Da')
-        self.element_is_clickable(self.locators.LOGIN_BUTTON1).click()
 
 
     def action_move_to_element(self, element): #навести элемент
