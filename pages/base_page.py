@@ -44,6 +44,8 @@ class BasePage:
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
 
+
+
     def action_double_click(self, element):
         action = ActionChains(self.driver) #вызываем функцию actionchains
         action.double_click(element) #дабл кликаем этой функцией на элемент

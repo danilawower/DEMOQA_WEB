@@ -11,6 +11,7 @@ Faker.seed()
 
 
 
+
 def generated_person():  # вызываем класс Пёрсон из даты с определёнными полями
     yield Person(
         full_name=faker_ru.first_name() + " " + faker_ru.last_name(),
