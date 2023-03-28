@@ -14,3 +14,5 @@ class LoginPageLocators:
     BOOK_LIST = (By.XPATH, "//span[@class='mr-2']")
     ADD_NEW_BOOK = (By.XPATH, "//button[@id='addNewRecordButton'][text()='Add To Your Collection']")
     DELETE_BOOK = (By.XPATH, "//div[@class='text-right button di']//button[@id='submit']")
+    MY_BOOKS = (By.XPATH, "//span[@class='mr-2']")
+    SEARCH_BOX = (By.XPATH, "//input[@id='searchBox']")

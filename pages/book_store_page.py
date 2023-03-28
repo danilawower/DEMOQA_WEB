@@ -2,9 +2,10 @@ import random
 import time
 
 from selenium.common import NoAlertPresentException
+from selenium.webdriver import Keys
 
 from generator.generator import generated_person
-from locators.book_store_page import LoginPageLocators
+from locators.book_store_page_locators import LoginPageLocators
 from pages.base_page import BasePage
 
 
@@ -47,6 +48,24 @@ class BookStorePage(BasePage):
             self.driver.switch_to.alert.accept()
         except NoAlertPresentException:
             print("exception hanlded")
+
+
+    def take_name_of_book(self, element):
+        book_text = element.get_attribute("innerHTML").splitlines()[0]
+        split_text = book_text.split(' ')
+        confirmation_num = split_text[2]
+        return confirmation_num
+
+    def check_my_books(self):
+        self.commit_login()
+        book_list = self.element_is_present(self.locators.BOOK_LIST)
+        book_text_before = self.take_name_of_book(book_list)
+        search_box = self.element_is_present(self.locators.SEARCH_BOX)
+        search_box.send_keys(book_text_before)
+        book_list = self.element_is_present(self.locators.BOOK_LIST)
+        book_text_after = self.take_name_of_book(book_list)
+        return book_text_before, book_text_after
+
 
 
 

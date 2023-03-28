@@ -26,3 +26,9 @@ class TestBookStore:
             login_page = BookStorePage(driver, "https://demoqa.com/login")
             login_page.open()
             login_page.delete_book()
+
+        def test_my_book(self, driver):
+            login_page = BookStorePage(driver, "https://demoqa.com/login")
+            login_page.open()
+            before, after = login_page.check_my_books()
+            assert before == after
