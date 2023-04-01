@@ -1,6 +1,7 @@
 import random
 import time
 
+import allure
 from selenium.common import NoAlertPresentException
 from selenium.webdriver import Keys
 
@@ -12,10 +13,14 @@ from pages.base_page import BasePage
 class LoginBookStorePage(BasePage):
     locators = LoginPageLocators()
 
+    @allure.step('Go to Login page')
     def commit_login(self):
-        self.element_is_clickable(self.locators.LOGIN_FIELD).send_keys('username1')
-        self.element_is_present(self.locators.PASSWORD_FIELD).send_keys('@#wTmBpo4')
-        self.element_is_clickable(self.locators.LOGIN_BUTTON).click()
+        with allure.step('Fill login field'):
+            self.element_is_clickable(self.locators.LOGIN_FIELD).send_keys('username1')
+        with allure.step('Fill password field'):
+            self.element_is_present(self.locators.PASSWORD_FIELD).send_keys('@#wTmBpo4')
+        with allure.step('Click login button'):
+            self.element_is_clickable(self.locators.LOGIN_BUTTON).click()
 
 
 class RegisterNewUserPage(BasePage):
