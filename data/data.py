@@ -3,10 +3,10 @@ import dataclasses
 
 @dataclasses.dataclass
 class Person:
-    full_name: str = None  # строковые данные
+    full_name: str = None
     firstname: str = None
     lastname: str = None
-    age: int = None  # числовые
+    age: int = None
     salary: int = None
     department: str = None
     email: str = None
@@ -20,30 +20,8 @@ class Person:
 
 @dataclasses.dataclass
 class Color:
-    color_name: list = None  # список
+    color_name: list = None
 
-
-@dataclasses.dataclass
-class Date:
-    day: str = None
-    month: str = None
-    year: str = None
-    time: str = None
-
-
-@dataclasses.dataclass
-class Car:
-    car_name: list = None
-
-
-@dataclasses.dataclass
-class Website:
-    site_type: list = None
-
-
-@dataclasses.dataclass
-class City:
-    city_name: list = None
 
 
 @dataclasses.dataclass

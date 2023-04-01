@@ -9,13 +9,17 @@ from locators.book_store_page_locators import LoginPageLocators
 from pages.base_page import BasePage
 
 
-class BookStorePage(BasePage):
+class LoginBookStorePage(BasePage):
     locators = LoginPageLocators()
 
     def commit_login(self):
         self.element_is_clickable(self.locators.LOGIN_FIELD).send_keys('username1')
         self.element_is_present(self.locators.PASSWORD_FIELD).send_keys('@#wTmBpo4')
         self.element_is_clickable(self.locators.LOGIN_BUTTON).click()
+
+
+class RegisterNewUserPage(BasePage):
+    locators = LoginPageLocators()
 
     def register_new_user(self):
         person = next(generated_person())
@@ -24,9 +28,12 @@ class BookStorePage(BasePage):
         self.element_is_present(self.locators.LAST_NAME).send_keys(person.lastname)
         self.element_is_present(self.locators.LOGIN_FIELD).send_keys(f'username{random.randint(1,15)}')
         self.element_is_present(self.locators.PASSWORD_FIELD).send_keys('@#wTmBpo4')
-        self.element_is_present(self.locators.CAPTCHA_CHECKBOX).click()
-        self.element_is_clickable(self.locators.REGISTER_BUTTON).click()
+        #self.element_is_present(self.locators.CAPTCHA_CHECKBOX).click()
+        #self.element_is_clickable(self.locators.REGISTER_BUTTON).click()
 
+
+class CheckBookAddingPage(BasePage):
+    locators = LoginPageLocators()
 
     def check_book_adding(self):
         self.commit_login()
@@ -41,20 +48,27 @@ class BookStorePage(BasePage):
             print('exception handled')
 
 
+class CheckBookDeletePage(BasePage):
+    locators = LoginPageLocators()
+
     def delete_book(self):
         self.commit_login()
         self.element_is_clickable(self.locators.DELETE_BOOK).click()
         try:
             self.driver.switch_to.alert.accept()
         except NoAlertPresentException:
-            print("exception hanlded")
+            print("exception handled")
 
+
+class CheckMyBooksPage(BasePage):
+    locators = LoginPageLocators()
 
     def take_name_of_book(self, element):
         book_text = element.get_attribute("innerHTML").splitlines()[0]
         split_text = book_text.split(' ')
         confirmation_num = split_text[2]
         return confirmation_num
+
 
     def check_my_books(self):
         self.commit_login()

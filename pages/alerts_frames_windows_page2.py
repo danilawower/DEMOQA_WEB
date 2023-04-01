@@ -12,6 +12,7 @@ class BrowserWindowsPage(BasePage):
         self.element_is_clickable(self.locators.NEW_WINDOW).click()
         self.driver.switch_to.window(self.driver.window_handles[1])
 
+
     def check_new_window_message(self):
         self.element_is_clickable(self.locators.NEW_WINDOW_MESSAGE).click()
         self.driver.switch_to.window(self.driver.window_handles[1])
@@ -19,7 +20,7 @@ class BrowserWindowsPage(BasePage):
         self.driver.switch_to.window(self.driver.window_handles[0])
 
 
-class AlertPage(BasePage):  # alert = self.driver.switch_to.alert     alert.accept()    alert.send_keys
+class AlertPage(BasePage):
     locators = AlertsLocators()
 
     def check_alert_button(self):
@@ -36,7 +37,7 @@ class AlertPage(BasePage):  # alert = self.driver.switch_to.alert     alert.acce
 
 
 
-class FramePage(BasePage):  # self.driver.switch_to.default_content()
+class FramePage(BasePage):
     locators = FramesLocators()
 
     def check_frames(self, frame):

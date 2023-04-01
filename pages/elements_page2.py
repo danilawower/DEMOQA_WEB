@@ -67,8 +67,6 @@ class RadioButtonPage(BasePage):  #self.element_is_clickable(item_list[list_num]
 
 
 
-
-
 class WebTablePage(BasePage):
 
     locators = WebTablePageLocators()
