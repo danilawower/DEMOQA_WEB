@@ -38,9 +38,8 @@ class CheckBoxPage(BasePage):
 
 
     def check_checkbox(self):
-        self.expand_all_function()
-        self.expand_all_function()
-        self.expand_all_function()
+        for _ in range(3):
+            self.expand_all_function()
         item_list = self.elements_are_present(self.locators.CHECKBOX_LIST)
         count = 17
         while count != 0:
