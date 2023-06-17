@@ -26,15 +26,20 @@ class LoginBookStorePage(BasePage):
 class RegisterNewUserPage(BasePage):
     locators = LoginPageLocators()
 
+    @allure.step('Go to Register page')
     def register_new_user(self):
         person = next(generated_person())
-        self.element_is_clickable(self.locators.NEW_USER_BUTTON).click()
-        self.element_is_present(self.locators.FIRST_NAME).send_keys(person.firstname)
-        self.element_is_present(self.locators.LAST_NAME).send_keys(person.lastname)
-        self.element_is_present(self.locators.LOGIN_FIELD).send_keys(f'username{random.randint(1,15)}')
-        self.element_is_present(self.locators.PASSWORD_FIELD).send_keys('@#wTmBpo4')
+        with allure.step('Click new user button'):
+            self.element_is_clickable(self.locators.NEW_USER_BUTTON).click()
+        with allure.step('Enter first name'):
+            self.element_is_present(self.locators.FIRST_NAME).send_keys(person.firstname)
+        with allure.step('Enter last name and log pass'):
+            self.element_is_present(self.locators.LAST_NAME).send_keys(person.lastname)
+            self.element_is_present(self.locators.LOGIN_FIELD).send_keys(f'username{random.randint(1,15)}')
+            self.element_is_present(self.locators.PASSWORD_FIELD).send_keys('@#wTmBpo4')
         #self.element_is_present(self.locators.CAPTCHA_CHECKBOX).click()
         #self.element_is_clickable(self.locators.REGISTER_BUTTON).click()
+
 
 
 class CheckBookAddingPage(BasePage):
@@ -67,6 +72,7 @@ class CheckBookDeletePage(BasePage):
 
 class CheckMyBooksPage(BasePage):
     locators = LoginPageLocators()
+
 
     def take_name_of_book(self, element):
         book_text = element.get_attribute("innerHTML").splitlines()[0]
