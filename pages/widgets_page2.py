@@ -13,7 +13,6 @@ class AccordianPage(BasePage):
     locators = AccordianLocators()
 
 
-
     def check_accordian(self, num):
         accordian = {'first': self.locators.FIRST_SECTION, 'second': self.locators.SECOND_SECTION, 'third':
             self.locators.THIRD_SECTION}
@@ -48,6 +47,7 @@ class SliderPage(BasePage):
     locators = SliderPageLocators()
 
 
+
     def check_slider(self):
         slider = self.element_is_present(self.locators.SLIDER)
         value_before = self.element_is_present(self.locators.SLIDER).get_attribute('value')
@@ -75,9 +75,11 @@ class TabsPage(BasePage):
         tabs = {'what': self.locators.WHAT, 'origin': self.locators.ORIGIN, 'use': self.locators.USE}
         self.element_is_clickable(tabs[number]).click()
 
+
     def check_random_tab(self):
         tabs = {'what': self.locators.WHAT, 'origin': self.locators.ORIGIN, 'use': self.locators.USE}
         self.element_is_clickable(random.choice(list(tabs.values()))).click()
+
 
 
 class ToolTipsPage(BasePage):
@@ -99,3 +101,5 @@ class MenuPage(BasePage):
         for item in menu:
             self.action_move_to_element(item)
             data.append(item.text)
+
+

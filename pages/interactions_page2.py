@@ -9,6 +9,8 @@ from pages.base_page import BasePage
 class SortablePage(BasePage):
     locators = SortablePageLocators()
 
+
+
     def check_sortable_list(self):
         self.element_is_clickable(self.locators.LIST_TAB).click()
         list_elements = self.elements_are_present(self.locators.LIST_ELEMENTS)

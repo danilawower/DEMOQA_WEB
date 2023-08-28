@@ -1,7 +1,7 @@
 import time
 
 from pages.widgets_page2 import AccordianPage, AutocompletePage, SliderPage, ProgressbarPage, TabsPage, ToolTipsPage, \
-    MenuPage
+    MenuPage, MenuPage2
 
 
 class TestWidgets:
@@ -65,3 +65,5 @@ class TestWidgets:
             menu_page = MenuPage(driver, "https://demoqa.com/menu#")
             menu_page.open()
             menu_page.check_menu()
+
+

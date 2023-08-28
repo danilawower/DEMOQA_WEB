@@ -10,6 +10,7 @@ fake_en = Faker('en')
 Faker.seed()
 
 
+
 def generated_person():
     yield Person(
         full_name=faker_ru.first_name() + " " + faker_ru.last_name(),
@@ -41,8 +42,6 @@ def generated_color():
     yield Color(
         color_name=['Red', 'Green', 'Yellow', 'Purple']
     )
-
-
 
 
 def generated_subject():

@@ -19,15 +19,17 @@ class TestAlertsFramesWindows:
             alert_page.open()
             alert_page.check_alert_button()
             alert_page.check_alert_text()
-            time.sleep(3)
+
 
 
     class TestFrames:
         def test_frames(self, driver):
             frames_page = FramePage(driver, "https://demoqa.com/frames")
             frames_page.open()
-            frames_page.check_frames('frame1')
-            frames_page.check_frames('frame2')
+            frame1 = frames_page.check_frames('frame1')
+            frame2 = frames_page.check_frames('frame2')
+            assert frame1 == ('350px', '500px')
+            assert frame2 == ('1000px', '400px')
 
 
     class TestNestedFrames:

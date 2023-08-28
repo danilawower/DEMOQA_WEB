@@ -5,12 +5,15 @@ from locators.alerts_frames_windows_locators2 import BrowserWindowsLocators, Ale
 from pages.base_page import BasePage
 
 
+
 class BrowserWindowsPage(BasePage):
     locators = BrowserWindowsLocators()
+
 
     def check_new_window(self):
         self.element_is_clickable(self.locators.NEW_WINDOW).click()
         self.driver.switch_to.window(self.driver.window_handles[1])
+
 
 
     def check_new_window_message(self):
@@ -20,13 +23,18 @@ class BrowserWindowsPage(BasePage):
         self.driver.switch_to.window(self.driver.window_handles[0])
 
 
+
+
+
 class AlertPage(BasePage):
     locators = AlertsLocators()
+
 
     def check_alert_button(self):
         self.element_is_clickable(self.locators.CONFIRM_BOX).click()
         alert = self.driver.switch_to.alert
         alert.accept()
+
 
     def check_alert_text(self):
         self.element_is_clickable(self.locators.ALERT_TEXT).click()
@@ -39,6 +47,7 @@ class AlertPage(BasePage):
 
 class FramePage(BasePage):
     locators = FramesLocators()
+
 
     def check_frames(self, frame):
         if frame == 'frame1':

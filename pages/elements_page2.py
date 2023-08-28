@@ -24,6 +24,7 @@ class TextBoxPage(BasePage):
         self.element_is_clickable(self.locators.SUBMIT_BUTTON).click()
 
 
+
 class CheckBoxPage(BasePage):
 
     locators = CheckBoxPageLocators()
@@ -58,10 +59,10 @@ class RadioButtonPage(BasePage):  #self.element_is_clickable(item_list[list_num]
 
     locators = RadioButtonPageLocators()
 
+
     def check_radiobutton(self, list_num):
         item_list = {'yes': self.locators.YES_BUTTON, 'impressive': self.locators.IMPRESSIVE_BUTTON}
         self.element_is_clickable(item_list[list_num]).click()
-
 
 
 
@@ -93,7 +94,7 @@ class WebTablePage(BasePage):
 
 
 
-class ButtonsPage(BasePage):   # , (self, type_click):, if type_click == 'double':
+class ButtonsPage(BasePage):  
     locators = ButtonPageLocators()
 
     def check_buttons(self, type_click):
@@ -108,7 +109,7 @@ class ButtonsPage(BasePage):   # , (self, type_click):, if type_click == 'double
 
 
 
-class LinksPage(BasePage):   #self.driver.switch_to.window(self.driver.window_handles[1])  # name = requests.get(url), return request.status_code
+class LinksPage(BasePage):
     locators = LinksPageLocators()
 
     def click_home_link(self):

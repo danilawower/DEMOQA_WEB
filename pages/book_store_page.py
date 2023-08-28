@@ -45,6 +45,7 @@ class RegisterNewUserPage(BasePage):
 class CheckBookAddingPage(BasePage):
     locators = LoginPageLocators()
 
+
     def check_book_adding(self):
         self.commit_login()
         self.element_is_clickable(self.locators.GO_TO_STORE_BUTTON).click()
@@ -79,6 +80,7 @@ class CheckMyBooksPage(BasePage):
         split_text = book_text.split(' ')
         confirmation_num = split_text[2]
         return confirmation_num
+
 
 
     def check_my_books(self):
