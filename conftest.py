@@ -1,6 +1,5 @@
 import datetime
 from datetime import datetime
-
 import allure
 import pytest as pytest
 from selenium import webdriver
