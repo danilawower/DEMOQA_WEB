@@ -13,9 +13,8 @@ cntrl+'   (сохранить в html)
 - пункт один
 - пункт два
 ![](https://cdn.freelance.ru/images/att/1580377_900_600.png)
-
-![[1580377_900_600.png| 400]]
 ![alt text](1580377_900_600.png)
+<img src="1580377_900_600.png" alt="Alt Text" width="300" height="200">
 
 *Использовать код:*
  ```sql
@@ -33,12 +32,14 @@ cntrl+'   (сохранить в html)
 >s
 
 ###### Чекбоксы (cntrl+L)
+- [ ] sdsa
 - [x] Сделано
 - [ ] Не сделано
 - [ ] - sdas
 - [x] - sdsa
-
  <font style ="color:yellow"> Текст желтый </font>
+
+
 
 **Таблица**   
 ***Таблица*** 
