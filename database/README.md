@@ -1,6 +1,6 @@
 # automation_qa_course
 
-cntrl+'   (сохранить в html)
+
 ### Заголовок 3
 ## Заголовок 2
 
@@ -9,11 +9,12 @@ cntrl+'   (сохранить в html)
 ###### Заголвоок 5
 
 
-[Сайт](https://ya.ru "Подсказка")  (cntl+k)
+[Сайт](https://ya.ru "Подсказка") 
 - пункт один
 - пункт два
 ![](https://cdn.freelance.ru/images/att/1580377_900_600.png)
 ![alt text](1580377_900_600.png)
+
 <img src="1580377_900_600.png" alt="Alt Text" width="300" height="200">
 
 *Использовать код:*
@@ -31,7 +32,7 @@ cntrl+'   (сохранить в html)
 >
 >s
 
-###### Чекбоксы (cntrl+L)
+
 - [ ] sdsa
 - [x] Сделано
 - [ ] Не сделано
