@@ -12,6 +12,8 @@
 [Сайт](https://ya.ru "Подсказка") 
 - пункт один
 - пункт два
+
+
 ![](https://cdn.freelance.ru/images/att/1580377_900_600.png)
 ![alt text](1580377_900_600.png)
 
@@ -62,6 +64,7 @@
 
 ```python
 self.more_code
+def.lala
 ```
 
 
@@ -72,6 +75,7 @@ self.more_code
 
 ---
 
+* Роль 0
 * Роль
-    * Роль 1
-    * Роль 2
+    * ПодРоль 1
+    * ПодРоль 2
