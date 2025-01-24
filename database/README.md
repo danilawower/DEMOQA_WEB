@@ -63,8 +63,7 @@
 `some-code`
 
 ```python
-self.more_code
-def.lala
+def.function
 ```
 
 
@@ -72,6 +71,7 @@ def.lala
 **Заметка:**
 
 Текст заметки
+
 
 ---
 
