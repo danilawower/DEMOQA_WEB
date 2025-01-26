@@ -7,6 +7,8 @@
 # Заголовок 1
 #### Заголовок 4
 ###### Заголвоок 5
+cntl+shift+p
+Markdown All in One: Print current document to HTML
 
 
 [Сайт](https://ya.ru "Подсказка") 
