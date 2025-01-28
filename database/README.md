@@ -40,7 +40,7 @@ Markdown All in One: Print current document to HTML
 - [x] Сделано
 - [ ] Не сделано
 
- <font style ="color:yellow"> Текст желтый </font>
+ <font style ="color:red"> Текст желтый </font>
 
 
 
@@ -63,10 +63,6 @@ Markdown All in One: Print current document to HTML
 
 
 `some-code`
-
-```python
-def.function
-```
 
 
 ---
