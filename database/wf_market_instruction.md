@@ -13,7 +13,14 @@ Log in via your login and password in to the market by pressing `Sign In` button
 Go to contracts section by pressing `Contracts` button.
 ![alt text](Screenshot_2.png)
 
-#### 2.1 Choose category.
+#### 2.1 Select category.
 
-Choose Unveiled Riven mods by pressing `Category` accordeon.
+Select Unveiled Riven mods by pressing `Category` accordeon.
 ![alt text](Screenshot_3.png)
+
+#### 2.2 Select Positive attributes.
+
+Select the attributes you are interested in by pressing `Positive attributes` accordeon.
+![alt text](Screenshot_4.png)
+
+
