@@ -7,8 +7,11 @@
 # Заголовок 1
 #### Заголовок 4
 ###### Заголвоок 5
-cntl+shift+p
-Markdown All in One: Print current document to HTML
+
+`cntl+shift+p`
+
+- [x] Markdown All in One: Print current document to HTML
+- [x] Mardkown PDF export 
 
 
 [Сайт](https://ya.ru "Подсказка") 
