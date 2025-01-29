@@ -4,7 +4,7 @@
 
 ### 1. Log in
 
-Log in via your login and password in to the market by pressing `Sign in` button.
+Log in via your login and password in to the market by pressing `Sign In` button.
 ![alt text](Screenshot_1.png)
 
 
@@ -13,7 +13,7 @@ Log in via your login and password in to the market by pressing `Sign in` button
 Go to contracts section by pressing `Contracts` button.
 ![alt text](Screenshot_2.png)
 
-### 3. Choose category.
+#### 2.1 Choose category.
 
 Choose Unveiled Riven mods by pressing `Category` accordeon.
 ![alt text](Screenshot_3.png)
