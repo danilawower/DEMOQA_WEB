@@ -16,7 +16,7 @@ Go to contracts section by pressing `Contracts` button.
 #### 2.1 Select category.
 
 Select Unveiled Riven mods by pressing `Category` accordeon.
-![alt text](Screenshot_3.png)
+![alt text](Screenshot_7.png)
 
 #### 2.2 Select Positive attributes.
 
