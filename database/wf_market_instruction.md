@@ -28,8 +28,9 @@ Select the attributes you are interested in by pressing `Positive Attributes` ac
 Select weapon name you are interested in by pressing `Weapon Name` accordeon or type weapon name in search bar.
 ![alt text](Screenshot_5.png)
 
-### 3. Unnecessary elements.
+#### 2.4 Search mode.
 
-You can select `Negative attributes`, `Type`, `Sort by` section if you interested in. Otherwise you can start searching your riven mode by pressing `Search` button.
+After you finish with neccesarry elements as category, positive attributes, weapon name you can start searching your riven mode by pressing `Search` button.
 ![alt text](Screenshot_6.png)
 
+### 3. Additional tools of searching.
