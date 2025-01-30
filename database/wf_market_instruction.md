@@ -34,3 +34,17 @@ After you finish with neccesarry elements as category, positive attributes, weap
 ![alt text](Screenshot_6.png)
 
 ### 3. Additional tools of searching.
+
+In addition to the mandatory search criteria for your mod, you can use additional search functions.
+Such as:
+
+`Type`
+- All
+- Direct
+- Auction
+  
+`Sort by`
+- Price(ascending)
+- Price(descending)
+- Positive attributes(ascending)
+- Positive attribute(descending)
