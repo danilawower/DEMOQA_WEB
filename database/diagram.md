@@ -21,4 +21,4 @@
 - `Тип оплаты`: каким способом совершена оплата.
 - `Сумма`: Это общая сумма купленного продукта.
 
-<code><img width="250%" title="Text" src="diagram1.png"></code>
+<code><img width="250%" title="er_diagram" src="diagram1.png"></code>
