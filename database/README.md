@@ -21,7 +21,7 @@
 
 ![](https://cdn.freelance.ru/images/att/1580377_900_600.png)
 ![alt text](1580377_900_600.png)
-<code><img width="25%" title="Text" src="1580377_900_600.png"></code>
+<code><img width="55%" title="Text" src="1580377_900_600.png"></code>
 
 <img src="1580377_900_600.png" alt="Alt Text" width="300" height="200">
 
