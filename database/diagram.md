@@ -1,4 +1,11 @@
-<code><img width="250%" title="Text" src="diagram.png"></code>
+<code><img width="250%" title="Text" src="diagram1.png"></code>
 
 
-Бла бла
+### Cущности и атрибуты интернет-магазина
+---
+1. Пользователь
+2. Продукт
+3. Категория
+4. Корзина
+5. Заказ
+
