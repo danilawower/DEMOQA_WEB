@@ -1,4 +1,4 @@
-<code><img width="200%" title="Text" src="diagram.png"></code>
+<code><img width="250%" title="Text" src="diagram.png"></code>
 
 
 Бла бла
