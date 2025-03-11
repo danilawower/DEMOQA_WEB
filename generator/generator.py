@@ -31,11 +31,11 @@ def generated_person():
 
 
 def generated_file():
-    path = rf'C:\Users\daniil\PycharmProjects\automation_qa_course\filetest{random.randint(0, 999)}.txt'  # путь к файлу и его название
-    file = open(path, 'w+')  # открыть файл
+    path = rf'C:\Users\daniil\PycharmProjects\automation_qa_course\filetest{random.randint(0, 999)}.txt'  
+    file = open(path, 'w+') 
     file.write(f'Hello World{random.randint(9, 222)}')
     file.close()
-    return file.name, path  # возвращаем имя созданного файла и путь к нему
+    return file.name, path  
 
 
 def generated_color():
