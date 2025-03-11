@@ -11,7 +11,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 @pytest.fixture(scope='session')
 def driver():
     chrome_options = Options()
-    chrome_options.add_argument('--incognito')
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--incognito")
+    chrome_options.add_argument("--ignore-certificate-errors")
+    chrome_options.add_argument("--window-size=1920,1080")
+    chrome_options.add_argument("--disable-cache")
     driver = webdriver.Chrome()
     driver.maximize_window()
     attach = driver.get_screenshot_as_png()
@@ -21,14 +25,4 @@ def driver():
     driver.quit()
 
 
-#@pytest.fixture(scope="function")
-#def driver():
-    #chrome_options = webdriver.ChromeOptions()
-    #driver = webdriver.Remote(
-        #command_executor='http://selenoid:4444/wd/hub',
-        #desired_capabilities={'browserName': 'chrome',
-                              #'version': '92.0'},
-        #options=chrome_options)
-    #driver.maximize_window()
-    #yield driver
-    #driver.quit()
+
